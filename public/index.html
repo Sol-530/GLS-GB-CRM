@@ -10,7 +10,7 @@
 @media(prefers-color-scheme:dark){:root{--bg:#1c1c1a;--bg2:#252523;--bg3:#2e2e2b;--text:#f0f0ec;--text2:#a0a09a;--text3:#6b6b67;--border:rgba(255,255,255,.10);--border2:rgba(255,255,255,.20);--info-bg:#042C53;--info-text:#85B7EB;--danger-bg:#501313;--danger-text:#F09595;--success-bg:#173404;--success-text:#97C459;--warn-bg:#412402;--warn-text:#FAC775;}}
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',Arial,sans-serif;background:var(--bg3);color:var(--text);font-size:14px}
-.auth-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;background:var(--bg3);padding:20px}
+.auth-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
 .auth-card{background:var(--bg);border:.5px solid var(--border);border-radius:var(--radius-lg);padding:32px;width:100%;max-width:360px}
 .auth-logo{display:flex;align-items:center;gap:10px;margin-bottom:28px}
 .auth-logo-icon{width:38px;height:38px;background:var(--text);border-radius:9px;display:flex;align-items:center;justify-content:center}
@@ -46,8 +46,10 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','H
 .btn-danger:hover{background:var(--danger-bg)}
 .btn-full{width:100%;justify-content:center;padding:10px}
 .badge{font-size:11px;font-weight:500;padding:2px 8px;border-radius:20px;display:inline-block}
-.bd-blue{background:var(--info-bg);color:var(--info-text)}.bd-gray{background:var(--bg3);color:var(--text2)}
-.bd-amber{background:var(--warn-bg);color:var(--warn-text)}.bd-red{background:var(--danger-bg);color:var(--danger-text)}
+.bd-blue{background:var(--info-bg);color:var(--info-text)}
+.bd-gray{background:var(--bg3);color:var(--text2)}
+.bd-amber{background:var(--warn-bg);color:var(--warn-text)}
+.bd-red{background:var(--danger-bg);color:var(--danger-text)}
 .bd-green{background:var(--success-bg);color:var(--success-text)}
 .card{background:var(--bg);border:.5px solid var(--border);border-radius:var(--radius-lg);overflow:hidden}
 .card-head{padding:14px 18px;border-bottom:.5px solid var(--border);display:flex;align-items:center;justify-content:space-between}
@@ -56,7 +58,8 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','H
 .list-item{display:flex;align-items:center;justify-content:space-between;padding:11px 14px;background:var(--bg);border:.5px solid var(--border);border-radius:var(--radius-lg);cursor:pointer;margin-bottom:5px;transition:border-color .12s}
 .list-item:hover{border-color:var(--border2)}
 .av{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;flex-shrink:0}
-.av-r{border-radius:50%}.av-lg{width:40px;height:40px;border-radius:9px;font-size:13px}
+.av-r{border-radius:50%}
+.av-lg{width:40px;height:40px;border-radius:9px;font-size:13px}
 .av-b{background:#E6F1FB;color:#0C447C}.av-t{background:#E1F5EE;color:#085041}
 .av-a{background:#FAEEDA;color:#633806}.av-c{background:#FAECE7;color:#712B13}
 .av-g{background:#F1EFE8;color:#444441}.av-p{background:#EEEDFE;color:#3C3489}
@@ -67,37 +70,49 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','H
 .sl{font-size:10px;font-weight:600;color:var(--text3);letter-spacing:.07em;text-transform:uppercase;margin-bottom:8px}
 .ir{display:flex;gap:8px;padding:4px 0;font-size:13px}
 .ik{color:var(--text2);width:86px;flex-shrink:0;font-size:12px}
-.iv{color:var(--text);flex:1;word-break:break-all}.iv-link{color:var(--info-text)}
+.iv{color:var(--text);flex:1;word-break:break-all}
+.iv-link{color:var(--info-text)}
 .divider{height:.5px;background:var(--border);margin:12px 0}
 .metric-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
 .metric{background:var(--bg);border:.5px solid var(--border);border-radius:var(--radius-lg);padding:14px 16px}
 .metric-label{font-size:11px;color:var(--text3);margin-bottom:5px}
-.metric-val{font-size:24px;font-weight:600}.metric-val.danger{color:var(--danger-text)}
+.metric-val{font-size:24px;font-weight:600}
+.metric-val.danger{color:var(--danger-text)}
 .alert-card{display:flex;align-items:flex-start;gap:10px;padding:10px 13px;background:var(--bg);border:.5px solid var(--border);border-radius:var(--radius-lg);margin-bottom:5px;cursor:pointer;transition:border-color .12s}
 .alert-card:hover{border-color:var(--border2)}
 .alert-card.overdue{border-left:3px solid #E24B4A;border-radius:0 var(--radius-lg) var(--radius-lg) 0}
 .alert-card.today{border-left:3px solid #EF9F27;border-radius:0 var(--radius-lg) var(--radius-lg) 0}
 .alert-card.upcoming{border-left:3px solid #378ADD;border-radius:0 var(--radius-lg) var(--radius-lg) 0}
 .alert-card.done{border-left:3px solid #5DAD82;border-radius:0 var(--radius-lg) var(--radius-lg) 0;opacity:.6}
-.tl-item{display:flex;gap:12px;padding-bottom:14px}.tl-item:last-child{padding-bottom:0}
+.tl-item{display:flex;gap:12px;padding-bottom:14px}
+.tl-item:last-child{padding-bottom:0}
 .tl-lw{display:flex;flex-direction:column;align-items:center;width:16px;flex-shrink:0}
 .tl-dot{width:10px;height:10px;border-radius:50%;margin-top:3px;flex-shrink:0}
-.tl-dot-past{background:var(--bg3);border:2px solid var(--text3)}.tl-dot-cur{background:#E1F5EE;border:2px solid #1D9E75}
-.tl-dot-next{background:#E6F1FB;border:2px solid #378ADD}.tl-dot-done{background:#E1F5EE;border:2px solid #5DAD82}
+.tl-dot-past{background:var(--bg3);border:2px solid var(--text3)}
+.tl-dot-cur{background:#E1F5EE;border:2px solid #1D9E75}
+.tl-dot-next{background:#E6F1FB;border:2px solid #378ADD}
+.tl-dot-done{background:#E1F5EE;border:2px solid #5DAD82}
 .tl-vline{width:1px;background:var(--border);flex:1;min-height:10px;margin-top:3px}
-.tl-c{flex:1;min-width:0}.tl-date{font-size:11px;color:var(--text3);margin-bottom:1px}
+.tl-c{flex:1;min-width:0}
+.tl-date{font-size:11px;color:var(--text3);margin-bottom:1px}
 .tkind{font-size:11px;font-weight:500;padding:2px 7px;border-radius:20px;display:inline-block;margin-top:3px}
-.kind-past{background:var(--bg3);color:var(--text2)}.kind-current{background:#E1F5EE;color:#0F6E56}
-.kind-next{background:#E6F1FB;color:#185FA5}.kind-done{background:#E1F5EE;color:#5DAD82}
+.kind-past{background:var(--bg3);color:var(--text2)}
+.kind-current{background:#E1F5EE;color:#0F6E56}
+.kind-next{background:#E6F1FB;color:#185FA5}
+.kind-done{background:#E1F5EE;color:#5DAD82}
 @media(prefers-color-scheme:dark){.kind-current{background:#04342C;color:#9FE1CB}.kind-next{background:#042C53;color:#85B7EB}}
 .chip{display:flex;align-items:center;justify-content:space-between;padding:8px 11px;background:var(--bg2);border-radius:var(--radius);border:.5px solid var(--border);cursor:pointer;margin-bottom:5px;transition:border-color .12s}
 .chip:hover{border-color:var(--border2)}
 .field-label{font-size:12px;color:var(--text2);margin-bottom:4px;margin-top:10px}
 .field-label:first-of-type{margin-top:0}
-input[type=text],input[type=date],input[type=email],input[type=password],select,textarea{width:100%;padding:8px 10px;font-size:13px;border:.5px solid var(--border2);border-radius:var(--radius);background:var(--bg);color:var(--text);font-family:inherit;outline:none}
+input[type=text],input[type=date],input[type=email],input[type=password],input[type=search],select,textarea{width:100%;padding:8px 10px;font-size:13px;border:.5px solid var(--border2);border-radius:var(--radius);background:var(--bg);color:var(--text);font-family:inherit;outline:none}
 input:focus,select:focus,textarea:focus{border-color:#378ADD;box-shadow:0 0 0 2px rgba(55,138,221,.15)}
 textarea{resize:vertical;min-height:56px}
-.form-row{display:flex;gap:10px}.form-row>*{flex:1}
+.form-row{display:flex;gap:10px}
+.form-row>*{flex:1}
+.search-wrap{position:relative;margin-bottom:14px}
+.search-wrap i{position:absolute;left:10px;top:50%;transform:translateY(-50%);font-size:16px;color:var(--text3);pointer-events:none}
+.search-wrap input{padding-left:34px}
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center;z-index:100;padding:20px}
 .modal{background:var(--bg);border-radius:var(--radius-lg);border:.5px solid var(--border);padding:22px;width:100%;max-width:480px;max-height:90vh;overflow-y:auto}
 .modal-title{font-size:15px;font-weight:600;margin-bottom:16px}
@@ -105,7 +120,8 @@ textarea{resize:vertical;min-height:56px}
 .acc-ck-list{background:var(--bg2);border:.5px solid var(--border);border-radius:var(--radius);padding:8px 10px;max-height:100px;overflow-y:auto}
 .acc-ck-list label{display:flex;align-items:center;gap:7px;font-size:13px;padding:3px 0;cursor:pointer}
 .act-form{background:var(--bg2);border:.5px solid var(--border);border-radius:var(--radius);padding:12px;margin-top:10px}
-.act-form .field-label{margin-top:8px}.act-form .field-label:first-of-type{margin-top:0}
+.act-form .field-label{margin-top:8px}
+.act-form .field-label:first-of-type{margin-top:0}
 .page-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
 .page-title{font-size:17px;font-weight:600}
 .back-btn{display:inline-flex;align-items:center;gap:5px;font-size:13px;color:var(--text2);background:none;border:none;cursor:pointer;padding:0;margin-bottom:12px}
@@ -120,25 +136,31 @@ textarea{resize:vertical;min-height:56px}
 @keyframes spin{to{transform:rotate(360deg)}}
 .act-check{width:16px;height:16px;border-radius:4px;border:1.5px solid var(--border2);background:var(--bg);cursor:pointer;flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;vertical-align:middle}
 .act-check.checked{background:var(--text);border-color:var(--text)}
+/* CALENDAR */
 .cal-layout{display:grid;grid-template-columns:1fr 300px;gap:16px;align-items:start}
 .cal-wrap{background:var(--bg);border:.5px solid var(--border);border-radius:var(--radius-lg);overflow:hidden}
 .cal-header{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:.5px solid var(--border)}
 .cal-title{font-size:15px;font-weight:600}
 .cal-grid{display:grid;grid-template-columns:repeat(7,1fr)}
-.cal-dow{text-align:center;font-size:11px;font-weight:600;color:var(--text3);padding:10px 4px;letter-spacing:.05em;text-transform:uppercase}
-.cal-cell{min-height:82px;border-top:.5px solid var(--border);border-right:.5px solid var(--border);padding:6px;vertical-align:top}
+.cal-dow{text-align:center;font-size:11px;font-weight:600;color:var(--text3);padding:8px 2px;letter-spacing:.04em;text-transform:uppercase}
+.cal-cell{height:96px;border-top:.5px solid var(--border);border-right:.5px solid var(--border);padding:5px;overflow:hidden;display:flex;flex-direction:column}
 .cal-cell:nth-child(7n){border-right:none}
-.cal-day-num{font-size:12px;font-weight:500;color:var(--text2);margin-bottom:3px}
-.cal-day-num.today-num{width:22px;height:22px;background:var(--text);color:var(--bg);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600}
+.cal-day-num{font-size:11px;font-weight:500;color:var(--text2);margin-bottom:2px;flex-shrink:0;line-height:1}
+.cal-day-num.today-num{width:20px;height:20px;background:var(--text);color:var(--bg);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600}
 .cal-day-num.other-month{color:var(--text3)}
-.cal-event{font-size:10px;font-weight:500;padding:2px 5px;border-radius:4px;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.ev-next{background:#E6F1FB;color:#185FA5}.ev-current{background:#E1F5EE;color:#0F6E56}
-.ev-overdue{background:#FCEBEB;color:#A32D2D}.ev-done{background:#F1EFE8;color:#888780;text-decoration:line-through}
+.cal-events-wrap{flex:1;overflow:hidden;display:flex;flex-direction:column;gap:2px;min-height:0}
+.cal-event{font-size:9.5px;font-weight:500;padding:2px 4px;border-radius:3px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;word-break:break-word;line-height:1.3;flex-shrink:0}
+.ev-next{background:#E6F1FB;color:#185FA5}
+.ev-current{background:#E1F5EE;color:#0F6E56}
+.ev-overdue{background:#FCEBEB;color:#A32D2D}
+.ev-done{background:#F1EFE8;color:#888780;text-decoration:line-through}
 @media(prefers-color-scheme:dark){.ev-next{background:#042C53;color:#85B7EB}.ev-current{background:#04342C;color:#9FE1CB}.ev-overdue{background:#501313;color:#F09595}}
 .act-sidebar{background:var(--bg);border:.5px solid var(--border);border-radius:var(--radius-lg);overflow:hidden}
 .act-sidebar-head{padding:12px 14px;border-bottom:.5px solid var(--border);font-size:13px;font-weight:600}
 .act-sidebar-item{display:flex;align-items:flex-start;gap:8px;padding:10px 14px;border-bottom:.5px solid var(--border)}
-.act-sidebar-item:last-child{border-bottom:none}.act-sidebar-item:hover{background:var(--bg2)}
+.act-sidebar-item:last-child{border-bottom:none}
+.act-sidebar-item:hover{background:var(--bg2)}
+/* ADMIN */
 .user-card{background:var(--bg2);border:.5px solid var(--border);border-radius:var(--radius-lg);padding:14px 16px;margin-bottom:8px;display:flex;align-items:center;justify-content:space-between}
 .user-card-info{display:flex;align-items:center;gap:10px}
 .user-av{width:34px;height:34px;border-radius:50%;background:var(--info-bg);color:var(--info-text);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;flex-shrink:0}
@@ -198,29 +220,37 @@ textarea{resize:vertical;min-height:56px}
 import{initializeApp}from"https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import{getAuth,signInWithEmailAndPassword,signOut,onAuthStateChanged}from"https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 import{getFirestore,doc,getDoc,setDoc,collection,getDocs,onSnapshot,addDoc,updateDoc,deleteDoc,serverTimestamp}from"https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-const firebaseConfig={apiKey:"AIzaSyBeKJhlrZa0QO53vGEECQ_Op_Yzg5QIIJ4",authDomain:"gls-bd-crm.firebaseapp.com",projectId:"gls-bd-crm",storageBucket:"gls-bd-crm.firebasestorage.app",messagingSenderId:"1099159791944",appId:"1:1099159791944:web:5b6d934f80012f85f96b7d"};
-const fbApp=initializeApp(firebaseConfig);
+
+const FB_CFG={apiKey:"AIzaSyBeKJhlrZa0QO53vGEECQ_Op_Yzg5QIIJ4",authDomain:"gls-bd-crm.firebaseapp.com",projectId:"gls-bd-crm",storageBucket:"gls-bd-crm.firebasestorage.app",messagingSenderId:"1099159791944",appId:"1:1099159791944:web:5b6d934f80012f85f96b7d"};
+const fbApp=initializeApp(FB_CFG);
 const auth=getAuth(fbApp);
 const db=getFirestore(fbApp);
+
+/* ── constants & utils ─────────────────────────────── */
 const CC={b:'av-b',t:'av-t',a:'av-a',c:'av-c',g:'av-g',p:'av-p'};
 const COLS=['b','t','a','c','g','p'];
-const $=s=>document.querySelector(s);
-const $$=s=>document.querySelectorAll(s);
+const MN=['January','February','March','April','May','June','July','August','September','October','November','December'];
+
 function uid(){return Math.random().toString(36).slice(2,9)}
-function ini(s){return(s||'?').split(/\s+/).map(w=>w[0]).join('').toUpperCase().slice(0,2)}
+function ini(s){return(s||'?').split(/\s+/).map(function(w){return w[0]}).join('').toUpperCase().slice(0,2)}
 function todayStr(){return new Date().toISOString().slice(0,10)}
 function daysFrom(d){return Math.floor((new Date(d)-new Date(todayStr()))/864e5)}
-function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500)}
-function showErr(msg){const e=document.getElementById('auth-err');e.textContent=msg;e.classList.add('show')}
-function clearErr(){const e=document.getElementById('auth-err');if(e)e.classList.remove('show')}
-let currentUser=null,isAdmin=false;
-let DB={accounts:{},leads:{}};
-let unsubAcc=null,unsubLeads=null;
-let S={tab:'dashboard',view:'list',accId:null,leadId:null,fromAcc:null,calYear:new Date().getFullYear(),calMonth:new Date().getMonth()};
-onAuthStateChanged(auth,async user=>{
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+function toast(msg){var t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(function(){t.classList.remove('show')},2500)}
+function showErr(msg){var e=document.getElementById('auth-err');e.textContent=msg;e.classList.add('show')}
+function clearErr(){var e=document.getElementById('auth-err');if(e)e.classList.remove('show')}
+
+/* ── state ─────────────────────────────────────────── */
+var currentUser=null,isAdmin=false;
+var DB={accounts:{},leads:{}};
+var unsubAcc=null,unsubLeads=null;
+var S={tab:'dashboard',view:'list',accId:null,leadId:null,fromAcc:null,calYear:new Date().getFullYear(),calMonth:new Date().getMonth(),leadSearch:''};
+
+/* ── auth ──────────────────────────────────────────── */
+onAuthStateChanged(auth,async function(user){
   document.getElementById('loading').style.display='none';
   if(user){
-    const ud=await getDoc(doc(db,'users',user.uid));
+    var ud=await getDoc(doc(db,'users',user.uid));
     if(!ud.exists()){await signOut(auth);document.getElementById('auth-wrap').style.display='flex';showErr('Access denied. Contact your administrator.');return;}
     currentUser=user;isAdmin=ud.data().role==='admin';
     document.getElementById('user-email-display').textContent=user.email;
@@ -234,32 +264,37 @@ onAuthStateChanged(auth,async user=>{
     document.getElementById('auth-wrap').style.display='flex';
   }
 });
+
 window.doLogin=async function(){
   clearErr();
-  const email=document.getElementById('login-email').value.trim();
-  const pw=document.getElementById('login-pw').value;
+  var email=document.getElementById('login-email').value.trim();
+  var pw=document.getElementById('login-pw').value;
   if(!email||!pw){showErr('Please enter email and password.');return}
   try{await signInWithEmailAndPassword(auth,email,pw);}
   catch(e){
-    if(['auth/user-not-found','auth/wrong-password','auth/invalid-credential'].includes(e.code))showErr('Invalid email or password.');
+    if(['auth/user-not-found','auth/wrong-password','auth/invalid-credential'].indexOf(e.code)>-1)showErr('Invalid email or password.');
     else if(e.code==='auth/too-many-requests')showErr('Too many attempts. Try again later.');
     else showErr('Sign-in failed. Please try again.');
   }
 };
 window.doLogout=async function(){await signOut(auth);};
+
+/* ── firestore ─────────────────────────────────────── */
 function startListeners(){
-  unsubAcc=onSnapshot(collection(db,'accounts'),snap=>{DB.accounts={};snap.forEach(d=>{DB.accounts[d.id]={...d.data(),id:d.id}});render();});
-  unsubLeads=onSnapshot(collection(db,'leads'),snap=>{DB.leads={};snap.forEach(d=>{DB.leads[d.id]={...d.data(),id:d.id}});render();});
+  unsubAcc=onSnapshot(collection(db,'accounts'),function(snap){DB.accounts={};snap.forEach(function(d){DB.accounts[d.id]=Object.assign({},d.data(),{id:d.id})});render();});
+  unsubLeads=onSnapshot(collection(db,'leads'),function(snap){DB.leads={};snap.forEach(function(d){DB.leads[d.id]=Object.assign({},d.data(),{id:d.id})});render();});
 }
 function stopListeners(){if(unsubAcc)unsubAcc();if(unsubLeads)unsubLeads();}
 function accs(){return Object.values(DB.accounts)}
 function leads(){return Object.values(DB.leads)}
+
+/* ── render ────────────────────────────────────────── */
 function render(){
-  const el=document.getElementById('main-content');if(!el)return;
+  var el=document.getElementById('main-content');if(!el)return;
   updateBadges();
-  const addBtn=document.getElementById('add-main-btn');
-  const addLabel=document.getElementById('add-label');
-  document.querySelectorAll('.nav-item[data-tab]').forEach(n=>n.classList.toggle('active',n.dataset.tab===S.tab));
+  var addBtn=document.getElementById('add-main-btn');
+  var addLabel=document.getElementById('add-label');
+  document.querySelectorAll('.nav-item[data-tab]').forEach(function(n){n.classList.toggle('active',n.dataset.tab===S.tab)});
   if(S.view==='acc_detail'){addBtn.style.display='none';el.innerHTML=renderAccDetail();}
   else if(S.view==='lead_detail'){addBtn.style.display='none';el.innerHTML=renderLeadDetail();}
   else{
@@ -275,399 +310,646 @@ function render(){
   }
   attachEvents();
 }
+
 function updateBadges(){
   document.getElementById('nb-acc').textContent=accs().length;
   document.getElementById('nb-leads').textContent=leads().length;
 }
+
 function getAlerts(){
-  const out=[];
-  leads().forEach(l=>(l.actions||[]).forEach(act=>{
-    if(act.kind==='past')return;
-    const diff=daysFrom(act.date);
-    const u=act.done?'done':diff<0?'overdue':diff===0?'today':diff<=7?'upcoming':null;
-    if(u)out.push({lead:l,action:act,urgency:u,diff:act.done?9999:diff});
-  }));
-  return out.sort((a,b)=>a.diff-b.diff);
+  var out=[];
+  leads().forEach(function(l){
+    (l.actions||[]).forEach(function(act){
+      if(act.kind==='past')return;
+      var diff=daysFrom(act.date);
+      var u=act.done?'done':diff<0?'overdue':diff===0?'today':diff<=7?'upcoming':null;
+      if(u)out.push({lead:l,action:act,urgency:u,diff:act.done?9999:diff});
+    });
+  });
+  return out.sort(function(a,b){return a.diff-b.diff});
 }
+
+/* ── dashboard ─────────────────────────────────────── */
 function renderDashboard(){
-  const alerts=getAlerts();
-  const pending=alerts.filter(a=>a.urgency!=='done');
-  const done=alerts.filter(a=>a.urgency==='done');
-  const ov=pending.filter(a=>a.urgency==='overdue').length;
-  const totalAct=leads().reduce((s,l)=>s+(l.actions||[]).length,0);
-  const urgBadge={overdue:'bd-red',today:'bd-amber',upcoming:'bd-blue',done:'bd-green'};
-  const urgLabel={overdue:'Overdue',today:'Due today',upcoming:'This week',done:'Done'};
+  var alerts=getAlerts();
+  var pending=alerts.filter(function(a){return a.urgency!=='done'});
+  var done=alerts.filter(function(a){return a.urgency==='done'});
+  var ov=pending.filter(function(a){return a.urgency==='overdue'}).length;
+  var totalAct=leads().reduce(function(s,l){return s+(l.actions||[]).length},0);
+  var urgBadge={overdue:'bd-red',today:'bd-amber',upcoming:'bd-blue',done:'bd-green'};
+  var urgLabel={overdue:'Overdue',today:'Due today',upcoming:'This week',done:'Done'};
+
   function mkCard(item){
-    const lead=item.lead,action=item.action,urgency=item.urgency;
-    const accNames=(lead.accounts||[]).map(id=>DB.accounts[id]?.name).filter(Boolean).join(', ')||'Unlinked';
-    const diff=daysFrom(action.date);
-    const dl=action.done?'Completed':urgency==='overdue'?Math.abs(diff)+'d overdue':urgency==='today'?'Today':diff===1?'Tomorrow':'In '+diff+'d';
-    return '<div class="alert-card '+urgency+'" data-goto-lead="'+lead.id+'">'
+    var lead=item.lead,action=item.action,urgency=item.urgency;
+    var accNames=(lead.accounts||[]).map(function(id){return DB.accounts[id]&&DB.accounts[id].name}).filter(Boolean).join(', ')||'Unlinked';
+    var diff=daysFrom(action.date);
+    var dl=action.done?'Completed':urgency==='overdue'?Math.abs(diff)+'d overdue':urgency==='today'?'Today':diff===1?'Tomorrow':'In '+diff+'d';
+    return '<div class="alert-card '+urgency+'" data-goto-lead="'+esc(lead.id)+'">'
       +'<div style="display:flex;flex-direction:column;align-items:center;gap:5px;flex-shrink:0">'
       +'<div class="av av-r '+(CC[lead.color]||'av-g')+'" style="width:28px;height:28px;font-size:10px">'+ini(lead.name)+'</div>'
-      +'<div class="act-check '+(action.done?'checked':'')+'" data-toggle="'+lead.id+'|'+action.id+'" onclick="event.stopPropagation()">'
+      +'<div class="act-check '+(action.done?'checked':'')+'" data-toggle="'+esc(lead.id)+'|'+esc(action.id)+'" onclick="event.stopPropagation()">'
       +(action.done?'<i class="ti ti-check" style="font-size:10px;color:var(--bg)"></i>':'')+'</div></div>'
       +'<div style="flex:1;min-width:0">'
       +'<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">'
-      +'<span style="font-size:13px;font-weight:600">'+lead.name+'</span>'
+      +'<span style="font-size:13px;font-weight:600">'+esc(lead.name)+'</span>'
       +'<span class="badge '+urgBadge[urgency]+'">'+urgLabel[urgency]+'</span></div>'
-      +'<div style="font-size:12px;color:var(--text2);margin-top:1px">'+accNames+'</div>'
-      +'<div style="font-size:13px;margin-top:4px;'+(action.done?'text-decoration:line-through;color:var(--text3)':'')+'">'+action.text+'</div></div>'
-      +'<div style="font-size:12px;font-weight:500;color:var(--text2);text-align:right;flex-shrink:0">'+dl+'<br><span style="font-size:11px;color:var(--text3)">'+action.date+'</span></div></div>';
+      +'<div style="font-size:12px;color:var(--text2);margin-top:1px">'+esc(accNames)+'</div>'
+      +'<div style="font-size:13px;margin-top:4px;'+(action.done?'text-decoration:line-through;color:var(--text3)':'')+'">'+(action.text||'')+'</div></div>'
+      +'<div style="font-size:12px;font-weight:500;color:var(--text2);text-align:right;flex-shrink:0">'+dl+'<br><span style="font-size:11px;color:var(--text3)">'+esc(action.date)+'</span></div></div>';
   }
-  const pHTML=pending.length?pending.map(mkCard).join(''):'<div style="padding:12px;text-align:center;font-size:13px;color:var(--text3);background:var(--bg2);border-radius:var(--radius)">No pending actions \u2014 all clear. \u2713</div>';
-  const rLeads=leads().slice(-4).reverse();
+
+  var pHTML=pending.length?pending.map(mkCard).join(''):'<div style="padding:12px;text-align:center;font-size:13px;color:var(--text3);background:var(--bg2);border-radius:var(--radius)">No pending actions — all clear ✓</div>';
+  var rLeads=leads().slice(-4).reverse();
   return '<div class="page-header"><div class="page-title">Dashboard</div><div style="font-size:12px;color:var(--text3)">'+new Date().toLocaleDateString('en-GB',{weekday:'short',year:'numeric',month:'short',day:'numeric'})+'</div></div>'
     +'<div class="metric-grid">'
     +'<div class="metric"><div class="metric-label">Accounts</div><div class="metric-val">'+accs().length+'</div></div>'
     +'<div class="metric"><div class="metric-label">Leads</div><div class="metric-val">'+leads().length+'</div></div>'
     +'<div class="metric"><div class="metric-label">Actions logged</div><div class="metric-val">'+totalAct+'</div></div>'
     +'<div class="metric"><div class="metric-label">Overdue</div><div class="metric-val '+(ov?'danger':'')+'">'+ov+'</div></div></div>'
-    +'<div class="section-head"><div class="sl" style="margin:0">Pending actions ('+pending.length+') <span style="font-size:11px;color:var(--text3);font-weight:400">\u2014 click \u2610 to mark done</span></div></div>'
+    +'<div class="section-head"><div class="sl" style="margin:0">Pending actions ('+pending.length+') <span style="font-size:11px;color:var(--text3);font-weight:400">— click ☐ to mark done</span></div></div>'
     +pHTML
     +(done.length?'<div class="section-head"><div class="sl" style="margin:0;color:var(--text3)">Completed ('+done.length+')</div></div>'+done.map(mkCard).join(''):'')
     +'<div class="section-head" style="margin-top:20px"><div class="sl" style="margin:0">Recently added leads</div><button class="btn btn-sm" data-tab="leads">View all</button></div>'
     +rLeads.map(function(l){
-      const an=(l.accounts||[]).map(id=>DB.accounts[id]?.name).filter(Boolean).join(', ')||'Unlinked';
-      const p=(l.actions||[]).filter(a=>a.kind!=='past'&&!a.done);
-      return '<div class="list-item" data-goto-lead="'+l.id+'"><div style="display:flex;align-items:center;gap:10px"><div class="av av-r '+(CC[l.color]||'av-g')+'">'+ini(l.name)+'</div><div><div style="display:flex;align-items:center;gap:6px"><span style="font-size:14px;font-weight:500">'+l.name+'</span>'+(p.length?'<span class="badge bd-amber">'+p.length+' pending</span>':'')+'</div><div style="font-size:12px;color:var(--text2)">'+(l.position||'')+' \u00b7 '+an+'</div></div></div><i class="ti ti-chevron-right" style="font-size:15px;color:var(--text3)"></i></div>';
+      var an=(l.accounts||[]).map(function(id){return DB.accounts[id]&&DB.accounts[id].name}).filter(Boolean).join(', ')||'Unlinked';
+      var p=(l.actions||[]).filter(function(a){return a.kind!=='past'&&!a.done});
+      return '<div class="list-item" data-goto-lead="'+esc(l.id)+'">'
+        +'<div style="display:flex;align-items:center;gap:10px">'
+        +'<div class="av av-r '+(CC[l.color]||'av-g')+'">'+ini(l.name)+'</div>'
+        +'<div><div style="display:flex;align-items:center;gap:6px"><span style="font-size:14px;font-weight:500">'+esc(l.name)+'</span>'+(p.length?'<span class="badge bd-amber">'+p.length+' pending</span>':'')+'</div>'
+        +'<div style="font-size:12px;color:var(--text2)">'+esc(l.position||'')+(l.position&&an?' · ':'')+esc(an)+'</div></div></div>'
+        +'<i class="ti ti-chevron-right" style="font-size:15px;color:var(--text3)"></i></div>';
     }).join('');
 }
+
+/* ── calendar ──────────────────────────────────────── */
 function renderCalendar(){
-  const y=S.calYear,m=S.calMonth;
-  const MN=['January','February','March','April','May','June','July','August','September','October','November','December'];
-  const firstDay=new Date(y,m,1).getDay();
-  const dim=new Date(y,m+1,0).getDate();
-  const dip=new Date(y,m,0).getDate();
-  const tf=todayStr();
-  const events={},allActs=[];
-  leads().forEach(function(l){(l.actions||[]).forEach(function(act){
-    if(!act.date)return;
-    const pfx=y+'-'+String(m+1).padStart(2,'0');
-    if(act.date.startsWith(pfx)){
+  var y=S.calYear,m=S.calMonth;
+  var firstDay=new Date(y,m,1).getDay();
+  var dim=new Date(y,m+1,0).getDate();
+  var dip=new Date(y,m,0).getDate();
+  var tf=todayStr();
+  var events={},allActs=[];
+  var pfx=y+'-'+String(m+1).padStart(2,'0');
+  leads().forEach(function(l){
+    (l.actions||[]).forEach(function(act){
+      if(!act.date||!act.date.startsWith(pfx))return;
       if(!events[act.date])events[act.date]=[];
       events[act.date].push({lead:l,action:act});
       allActs.push({lead:l,action:act,date:act.date});
-    }
-  });});
-  allActs.sort(function(a,b){return a.date<b.date?-1:1;});
-  let cells='',cc=0;
-  for(let i=firstDay-1;i>=0;i--){cells+='<div class="cal-cell"><div class="cal-day-num other-month">'+(dip-i)+'</div></div>';cc++;}
-  for(let d=1;d<=dim;d++){
-    const ds=y+'-'+String(m+1).padStart(2,'0')+'-'+String(d).padStart(2,'0');
-    const isT=ds===tf;
-    const evs=events[ds]||[];
-    let evH=evs.slice(0,3).map(function(item){
-      const cls=item.action.done?'ev-done':daysFrom(ds)<0?'ev-overdue':item.action.kind==='current'?'ev-current':'ev-next';
-      return '<div class="cal-event '+cls+'" title="'+item.lead.name+': '+item.action.text+'">'+item.lead.name+'</div>';
-    }).join('');
-    if(evs.length>3)evH+='<div style="font-size:10px;color:var(--text3);padding:1px 4px">+'+(evs.length-3)+' more</div>';
-    cells+='<div class="cal-cell"><div class="cal-day-num'+(isT?' today-num':'')+'">'+d+'</div>'+evH+'</div>';cc++;
+    });
+  });
+  allActs.sort(function(a,b){return a.date<b.date?-1:1});
+
+  var cells='',cc=0;
+  for(var i=firstDay-1;i>=0;i--){
+    cells+='<div class="cal-cell"><div class="cal-day-num other-month">'+(dip-i)+'</div><div class="cal-events-wrap"></div></div>';cc++;
   }
-  const rem=cc%7===0?0:7-(cc%7);
-  for(let d=1;d<=rem;d++){cells+='<div class="cal-cell"><div class="cal-day-num other-month">'+d+'</div></div>';}
-  const sideItems=allActs.length?allActs.map(function(item){
-    const diff=daysFrom(item.date);
-    const color=item.action.done?'var(--text3)':diff<0?'var(--danger-text)':diff===0?'var(--warn-text)':'var(--info-text)';
-    const bg=item.action.done?'var(--bg3)':diff<0?'var(--danger-bg)':diff===0?'var(--warn-bg)':'var(--info-bg)';
-    return '<div class="act-sidebar-item"><div class="act-check '+(item.action.done?'checked':'')+'" data-toggle="'+item.lead.id+'|'+item.action.id+'" style="margin-top:1px">'+(item.action.done?'<i class="ti ti-check" style="font-size:10px;color:var(--bg)"></i>':'')+'</div><div style="flex:1;min-width:0"><div style="font-size:12px;font-weight:500;color:'+color+';'+(item.action.done?'text-decoration:line-through':'')+'">'+item.action.text+'</div><div style="font-size:11px;color:var(--text2);margin-top:1px">'+item.lead.name+' \u00b7 '+item.date+'</div><div style="display:inline-block;font-size:10px;font-weight:500;padding:1px 6px;border-radius:20px;background:'+bg+';color:'+color+';margin-top:2px">'+(item.action.kind==='past'?'Past':item.action.kind==='current'?'Current':'Follow-up')+'</div></div></div>';
+  for(var d=1;d<=dim;d++){
+    var ds=y+'-'+String(m+1).padStart(2,'0')+'-'+String(d).padStart(2,'0');
+    var isT=ds===tf;
+    var evs=events[ds]||[];
+    var evH=evs.slice(0,2).map(function(item){
+      var cls=item.action.done?'ev-done':daysFrom(ds)<0?'ev-overdue':item.action.kind==='current'?'ev-current':'ev-next';
+      return '<div class="cal-event '+cls+'" title="'+esc(item.lead.name)+': '+esc(item.action.text)+'">'+esc(item.lead.name)+'</div>';
+    }).join('');
+    if(evs.length>2)evH+='<div style="font-size:9px;color:var(--text3);padding:1px 4px">+'+(evs.length-2)+' more</div>';
+    cells+='<div class="cal-cell"><div class="cal-day-num'+(isT?' today-num':'')+'">'+d+'</div><div class="cal-events-wrap">'+evH+'</div></div>';cc++;
+  }
+  var rem=cc%7===0?0:7-(cc%7);
+  for(var dd=1;dd<=rem;dd++){
+    cells+='<div class="cal-cell"><div class="cal-day-num other-month">'+dd+'</div><div class="cal-events-wrap"></div></div>';
+  }
+
+  var sideItems=allActs.length?allActs.map(function(item){
+    var diff=daysFrom(item.date);
+    var color=item.action.done?'var(--text3)':diff<0?'var(--danger-text)':diff===0?'var(--warn-text)':'var(--info-text)';
+    var bg=item.action.done?'var(--bg3)':diff<0?'var(--danger-bg)':diff===0?'var(--warn-bg)':'var(--info-bg)';
+    return '<div class="act-sidebar-item">'
+      +'<div class="act-check '+(item.action.done?'checked':'')+'" data-toggle="'+esc(item.lead.id)+'|'+esc(item.action.id)+'" style="margin-top:1px">'
+      +(item.action.done?'<i class="ti ti-check" style="font-size:10px;color:var(--bg)"></i>':'')+'</div>'
+      +'<div style="flex:1;min-width:0">'
+      +'<div style="font-size:12px;font-weight:500;color:'+color+';'+(item.action.done?'text-decoration:line-through':'')+'">'+esc(item.action.text)+'</div>'
+      +'<div style="font-size:11px;color:var(--text2);margin-top:1px">'+esc(item.lead.name)+' · '+esc(item.date)+'</div>'
+      +'<div style="display:inline-block;font-size:10px;font-weight:500;padding:1px 6px;border-radius:20px;background:'+bg+';color:'+color+';margin-top:2px">'+(item.action.kind==='past'?'Past':item.action.kind==='current'?'Current':'Follow-up')+'</div>'
+      +'</div></div>';
   }).join(''):'<div class="empty">No actions this month.</div>';
-  return '<div class="page-header"><div class="page-title">'+MN[m]+' '+y+'</div><div style="display:flex;gap:6px" class="no-print"><button class="btn btn-sm" id="cal-prev"><i class="ti ti-chevron-left"></i></button><button class="btn btn-sm" id="cal-today">Today</button><button class="btn btn-sm" id="cal-next"><i class="ti ti-chevron-right"></i></button></div></div>'
-    +'<div class="cal-layout"><div class="cal-wrap"><div class="cal-header"><div class="cal-title">'+MN[m]+' '+y+'</div><div style="font-size:12px;color:var(--text3)">'+allActs.length+' action'+(allActs.length!==1?'s':'')+'</div></div>'
-    +'<div class="cal-grid">'+['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].map(d=>'<div class="cal-dow">'+d+'</div>').join('')+cells+'</div></div>'
+
+  return '<div class="page-header"><div class="page-title">'+MN[m]+' '+y+'</div>'
+    +'<div style="display:flex;gap:6px" class="no-print">'
+    +'<button class="btn btn-sm" id="cal-prev"><i class="ti ti-chevron-left"></i></button>'
+    +'<button class="btn btn-sm" id="cal-today">Today</button>'
+    +'<button class="btn btn-sm" id="cal-next"><i class="ti ti-chevron-right"></i></button>'
+    +'</div></div>'
+    +'<div class="cal-layout">'
+    +'<div class="cal-wrap">'
+    +'<div class="cal-header"><div class="cal-title">'+MN[m]+' '+y+'</div><div style="font-size:12px;color:var(--text3)">'+allActs.length+' action'+(allActs.length!==1?'s':'')+'</div></div>'
+    +'<div class="cal-grid">'
+    +['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].map(function(dw){return'<div class="cal-dow">'+dw+'</div>'}).join('')
+    +cells+'</div></div>'
     +'<div class="act-sidebar"><div class="act-sidebar-head">Actions in '+MN[m]+'</div>'+sideItems+'</div></div>';
 }
+
+/* ── account list ──────────────────────────────────── */
 function renderAccList(){
-  const list=accs();
+  var list=accs();
   if(!list.length)return'<div class="page-header"><div class="page-title">Accounts</div></div><div class="empty">No accounts yet.</div>';
-  return '<div class="page-header"><div class="page-title">Accounts</div><div style="display:flex;align-items:center;gap:8px"><button class="btn btn-sm btn-danger" id="bulk-del-acc-btn" style="display:none"><i class="ti ti-trash"></i> Delete selected (<span id="bulk-acc-count">0</span>)</button><label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text2);cursor:pointer"><input type="checkbox" id="sel-all-acc" style="width:14px;height:14px;cursor:pointer"> Select all</label></div></div>'
-    +list.map(function(a){return '<div class="list-item" data-acc="'+a.id+'"><div style="display:flex;align-items:center;gap:10px"><input type="checkbox" class="ck-acc" value="'+a.id+'" style="width:15px;height:15px;cursor:pointer;flex-shrink:0" onclick="event.stopPropagation()"><div class="av '+(CC[a.color]||'av-g')+'">'+ini(a.name)+'</div><div><div style="font-size:14px;font-weight:500">'+a.name+'</div><div style="font-size:12px;color:var(--text2)">'+(a.type||'')+' \u00b7 '+(a.pic||'\u2014')+'</div></div></div><div style="display:flex;align-items:center;gap:8px"><span class="badge bd-blue">'+(a.leads||[]).length+' lead'+((a.leads||[]).length!==1?'s':'')+'</span><i class="ti ti-chevron-right" style="font-size:15px;color:var(--text3)"></i></div></div>';}).join('');
+  return '<div class="page-header"><div class="page-title">Accounts</div>'
+    +'<div style="display:flex;align-items:center;gap:8px">'
+    +'<button class="btn btn-sm btn-danger" id="bulk-del-acc-btn" style="display:none"><i class="ti ti-trash"></i> Delete selected (<span id="bulk-acc-count">0</span>)</button>'
+    +'<label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text2);cursor:pointer"><input type="checkbox" id="sel-all-acc" style="width:14px;height:14px;cursor:pointer"> Select all</label>'
+    +'</div></div>'
+    +list.map(function(a){
+      return '<div class="list-item" data-acc="'+esc(a.id)+'">'
+        +'<div style="display:flex;align-items:center;gap:10px">'
+        +'<input type="checkbox" class="ck-acc" value="'+esc(a.id)+'" style="width:15px;height:15px;cursor:pointer;flex-shrink:0" onclick="event.stopPropagation()">'
+        +'<div class="av '+(CC[a.color]||'av-g')+'">'+ini(a.name)+'</div>'
+        +'<div><div style="font-size:14px;font-weight:500">'+esc(a.name)+'</div><div style="font-size:12px;color:var(--text2)">'+esc(a.type||'')+' · '+esc(a.pic||'—')+'</div></div></div>'
+        +'<div style="display:flex;align-items:center;gap:8px">'
+        +'<span class="badge bd-blue">'+(a.leads||[]).length+' lead'+((a.leads||[]).length!==1?'s':'')+'</span>'
+        +'<i class="ti ti-chevron-right" style="font-size:15px;color:var(--text3)"></i></div></div>';
+    }).join('');
 }
+
+/* ── lead list ─────────────────────────────────────── */
 function renderLeadList(){
-  const linked=leads().filter(l=>(l.accounts||[]).length>0);
-  const unlinked=leads().filter(l=>!(l.accounts||[]).length);
+  var q=S.leadSearch.toLowerCase().trim();
+  var all=leads();
+  var filtered=q?all.filter(function(l){
+    return (l.name||'').toLowerCase().indexOf(q)>-1
+      ||(l.company||'').toLowerCase().indexOf(q)>-1
+      ||(l.position||'').toLowerCase().indexOf(q)>-1
+      ||(l.email||'').toLowerCase().indexOf(q)>-1
+      ||(l.comment||'').toLowerCase().indexOf(q)>-1;
+  }):all;
+
+  var linked=filtered.filter(function(l){return(l.accounts||[]).length>0});
+  var unlinked=filtered.filter(function(l){return!(l.accounts||[]).length});
+
   function row(l){
-    const an=(l.accounts||[]).map(id=>DB.accounts[id]?.name).filter(Boolean).join(', ')||'Unlinked';
-    const p=(l.actions||[]).filter(a=>a.kind!=='past'&&!a.done);
-    return '<div class="list-item" data-lead="'+l.id+'"><div style="display:flex;align-items:center;gap:10px"><input type="checkbox" class="ck-lead" value="'+l.id+'" style="width:15px;height:15px;cursor:pointer;flex-shrink:0" onclick="event.stopPropagation()"><div class="av av-r '+(CC[l.color]||'av-g')+'">'+ini(l.name)+'</div><div><div style="display:flex;align-items:center;gap:6px"><span style="font-size:14px;font-weight:500">'+l.name+'</span>'+(p.length?'<span class="badge bd-amber">'+p.length+' pending</span>':'')+'</div><div style="font-size:12px;color:var(--text2)">'+(l.position||'')+' \u00b7 '+(l.company||'')+'</div></div></div><div style="display:flex;align-items:center;gap:8px"><span class="badge '+((l.accounts||[]).length?'bd-blue':'bd-gray')+'">'+an+'</span><i class="ti ti-chevron-right" style="font-size:15px;color:var(--text3)"></i></div></div>';
+    var an=(l.accounts||[]).map(function(id){return DB.accounts[id]&&DB.accounts[id].name}).filter(Boolean).join(', ')||'Unlinked';
+    var p=(l.actions||[]).filter(function(a){return a.kind!=='past'&&!a.done});
+    return '<div class="list-item" data-lead="'+esc(l.id)+'">'
+      +'<div style="display:flex;align-items:center;gap:10px">'
+      +'<input type="checkbox" class="ck-lead" value="'+esc(l.id)+'" style="width:15px;height:15px;cursor:pointer;flex-shrink:0" onclick="event.stopPropagation()">'
+      +'<div class="av av-r '+(CC[l.color]||'av-g')+'">'+ini(l.name)+'</div>'
+      +'<div><div style="display:flex;align-items:center;gap:6px"><span style="font-size:14px;font-weight:500">'+esc(l.name)+'</span>'+(p.length?'<span class="badge bd-amber">'+p.length+' pending</span>':'')+'</div>'
+      +'<div style="font-size:12px;color:var(--text2)">'+esc(l.position||'')+' · '+esc(l.company||'')+'</div></div></div>'
+      +'<div style="display:flex;align-items:center;gap:8px">'
+      +'<span class="badge '+((l.accounts||[]).length?'bd-blue':'bd-gray')+'">'+esc(an)+'</span>'
+      +'<i class="ti ti-chevron-right" style="font-size:15px;color:var(--text3)"></i></div></div>';
   }
-  let h='<div class="page-header"><div class="page-title">Leads</div><div style="display:flex;align-items:center;gap:8px"><button class="btn btn-sm btn-danger" id="bulk-del-lead-btn" style="display:none"><i class="ti ti-trash"></i> Delete selected (<span id="bulk-lead-count">0</span>)</button><label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text2);cursor:pointer"><input type="checkbox" id="sel-all-lead" style="width:14px;height:14px;cursor:pointer"> Select all</label></div></div>';
+
+  var h='<div class="page-header"><div class="page-title">Leads</div>'
+    +'<div style="display:flex;align-items:center;gap:8px">'
+    +'<button class="btn btn-sm btn-danger" id="bulk-del-lead-btn" style="display:none"><i class="ti ti-trash"></i> Delete selected (<span id="bulk-lead-count">0</span>)</button>'
+    +'<label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text2);cursor:pointer"><input type="checkbox" id="sel-all-lead" style="width:14px;height:14px;cursor:pointer"> Select all</label>'
+    +'</div></div>'
+    +'<div class="search-wrap"><i class="ti ti-search"></i><input type="search" id="lead-search" placeholder="Search by name, company, position..." value="'+esc(S.leadSearch)+'"></div>';
+
+  if(q&&!filtered.length){
+    h+='<div class="empty">No results for &ldquo;'+esc(S.leadSearch)+'&rdquo;</div>';
+    return h;
+  }
   if(linked.length){h+='<div style="font-size:10px;font-weight:600;color:var(--text3);letter-spacing:.07em;text-transform:uppercase;margin-bottom:7px">Linked leads</div>'+linked.map(row).join('');}
-  if(unlinked.length){h+='<div style="font-size:10px;font-weight:600;color:var(--text3);letter-spacing:.07em;text-transform:uppercase;margin-bottom:7px;margin-top:16px">Else \u2014 Unlinked leads</div>'+unlinked.map(row).join('');}
+  if(unlinked.length){h+='<div style="font-size:10px;font-weight:600;color:var(--text3);letter-spacing:.07em;text-transform:uppercase;margin-bottom:7px;margin-top:16px">Else — Unlinked leads</div>'+unlinked.map(row).join('');}
   if(!linked.length&&!unlinked.length)h+='<div class="empty">No leads yet.</div>';
   return h;
 }
+
+/* ── account detail ────────────────────────────────── */
 function renderAccDetail(){
-  const a=DB.accounts[S.accId];if(!a)return'';
-  const ll=(a.leads||[]).map(id=>DB.leads[id]).filter(Boolean);
-  let llHTML=ll.length?ll.map(function(l){const p=(l.actions||[]).filter(x=>x.kind!=='past'&&!x.done);return'<div class="chip" data-lead="'+l.id+'"><div style="display:flex;align-items:center;gap:8px"><div class="av av-r '+(CC[l.color]||'av-g')+'" style="width:26px;height:26px;font-size:10px">'+ini(l.name)+'</div><div><div style="font-size:13px;font-weight:500">'+l.name+'</div><div style="font-size:11px;color:var(--text2)">'+(l.position||'')+'</div></div></div><div style="display:flex;align-items:center;gap:6px">'+(p.length?'<span class="badge bd-amber">'+p.length+' pending</span>':'')+'<i class="ti ti-chevron-right" style="font-size:14px;color:var(--text3)"></i></div></div>';}).join(''):'<div style="font-size:13px;color:var(--text3);padding:6px 0">No linked leads.</div>';
-  return '<button class="back-btn" id="back-btn"><i class="ti ti-arrow-left"></i> Back to Accounts</button><div class="card"><div class="card-head"><div class="card-head-l"><div class="av av-lg '+(CC[a.color]||'av-g')+'">'+ini(a.name)+'</div><div><div style="font-size:15px;font-weight:600">'+a.name+'</div><div style="font-size:12px;color:var(--text2)">'+(a.type||'')+'</div></div></div><div style="display:flex;gap:6px"><button class="btn btn-sm" data-edit-acc="'+a.id+'"><i class="ti ti-edit"></i> Edit</button><button class="btn btn-sm btn-danger" data-del-acc="'+a.id+'"><i class="ti ti-trash"></i></button></div></div><div class="card-body"><div class="sl">Account Info</div><div class="ir"><span class="ik"><i class="ti ti-map-pin" style="font-size:12px;vertical-align:-1px;margin-right:3px"></i>Address</span><span class="iv">'+(a.address||'\u2014')+'</span></div><div class="ir"><span class="ik"><i class="ti ti-user" style="font-size:12px;vertical-align:-1px;margin-right:3px"></i>PIC</span><span class="iv">'+(a.pic||'\u2014')+'</span></div><div class="ir"><span class="ik"><i class="ti ti-mail" style="font-size:12px;vertical-align:-1px;margin-right:3px"></i>Email</span><span class="iv iv-link">'+(a.email||'\u2014')+'</span></div><div class="ir"><span class="ik"><i class="ti ti-phone" style="font-size:12px;vertical-align:-1px;margin-right:3px"></i>Phone</span><span class="iv">'+(a.phone||'\u2014')+'</span></div><div class="ir"><span class="ik"><i class="ti ti-notes" style="font-size:12px;vertical-align:-1px;margin-right:3px"></i>Comment</span><span class="iv" style="color:var(--text2)">'+(a.comment||'\u2014')+'</span></div><div class="divider"></div><div class="sl">Linked Leads ('+ll.length+')</div>'+llHTML+'</div></div>';
+  var a=DB.accounts[S.accId];if(!a)return'';
+  var ll=(a.leads||[]).map(function(id){return DB.leads[id]}).filter(Boolean);
+  var llHTML=ll.length?ll.map(function(l){
+    var p=(l.actions||[]).filter(function(x){return x.kind!=='past'&&!x.done});
+    return '<div class="chip" data-lead="'+esc(l.id)+'">'
+      +'<div style="display:flex;align-items:center;gap:8px">'
+      +'<div class="av av-r '+(CC[l.color]||'av-g')+'" style="width:26px;height:26px;font-size:10px">'+ini(l.name)+'</div>'
+      +'<div><div style="font-size:13px;font-weight:500">'+esc(l.name)+'</div><div style="font-size:11px;color:var(--text2)">'+esc(l.position||'')+'</div></div></div>'
+      +'<div style="display:flex;align-items:center;gap:6px">'+(p.length?'<span class="badge bd-amber">'+p.length+' pending</span>':'')
+      +'<i class="ti ti-chevron-right" style="font-size:14px;color:var(--text3)"></i></div></div>';
+  }).join(''):'<div style="font-size:13px;color:var(--text3);padding:6px 0">No linked leads.</div>';
+
+  return '<button class="back-btn" id="back-btn"><i class="ti ti-arrow-left"></i> Back to Accounts</button>'
+    +'<div class="card"><div class="card-head">'
+    +'<div class="card-head-l"><div class="av av-lg '+(CC[a.color]||'av-g')+'">'+ini(a.name)+'</div>'
+    +'<div><div style="font-size:15px;font-weight:600">'+esc(a.name)+'</div><div style="font-size:12px;color:var(--text2)">'+esc(a.type||'')+'</div></div></div>'
+    +'<div style="display:flex;gap:6px"><button class="btn btn-sm" data-edit-acc="'+esc(a.id)+'"><i class="ti ti-edit"></i> Edit</button>'
+    +'<button class="btn btn-sm btn-danger" data-del-acc="'+esc(a.id)+'"><i class="ti ti-trash"></i></button></div></div>'
+    +'<div class="card-body"><div class="sl">Account Info</div>'
+    +'<div class="ir"><span class="ik"><i class="ti ti-map-pin" style="font-size:12px;vertical-align:-1px;margin-right:3px"></i>Address</span><span class="iv">'+esc(a.address||'—')+'</span></div>'
+    +'<div class="ir"><span class="ik"><i class="ti ti-user" style="font-size:12px;vertical-align:-1px;margin-right:3px"></i>PIC</span><span class="iv">'+esc(a.pic||'—')+'</span></div>'
+    +'<div class="ir"><span class="ik"><i class="ti ti-mail" style="font-size:12px;vertical-align:-1px;margin-right:3px"></i>Email</span><span class="iv iv-link">'+esc(a.email||'—')+'</span></div>'
+    +'<div class="ir"><span class="ik"><i class="ti ti-phone" style="font-size:12px;vertical-align:-1px;margin-right:3px"></i>Phone</span><span class="iv">'+esc(a.phone||'—')+'</span></div>'
+    +'<div class="ir"><span class="ik"><i class="ti ti-notes" style="font-size:12px;vertical-align:-1px;margin-right:3px"></i>Comment</span><span class="iv" style="color:var(--text2)">'+esc(a.comment||'—')+'</span></div>'
+    +'<div class="divider"></div><div class="sl">Linked Leads ('+ll.length+')</div>'+llHTML+'</div></div>';
 }
+
+/* ── lead detail ───────────────────────────────────── */
 function renderLeadDetail(){
-  const l=DB.leads[S.leadId];if(!l)return'';
-  const la=(l.accounts||[]).map(id=>DB.accounts[id]).filter(Boolean);
-  const fromAcc=S.fromAcc?DB.accounts[S.fromAcc]:null;
-  const actions=[...(l.actions||[])].sort((a,b)=>a.date<b.date?-1:1);
-  let actHTML=actions.length?'<div style="margin-top:10px">'+actions.map(function(act,i,arr){
-    return '<div class="tl-item"><div class="tl-lw"><div class="tl-dot '+(act.done?'tl-dot-done':act.kind==='past'?'tl-dot-past':act.kind==='next'?'tl-dot-next':'tl-dot-cur')+'"></div>'+(i<arr.length-1?'<div class="tl-vline"></div>':'')+'</div><div class="tl-c"><div class="tl-date">'+act.date+'</div><div style="font-size:13px;'+(act.done?'text-decoration:line-through;color:var(--text3)':'')+'">'+act.text+'</div><div style="display:flex;align-items:center;justify-content:space-between;margin-top:4px;flex-wrap:wrap;gap:4px"><div style="display:flex;align-items:center;gap:6px"><span class="tkind '+(act.done?'kind-done':act.kind==='past'?'kind-past':act.kind==='current'?'kind-current':'kind-next')+'">'+(act.done?'\u2713 Done':act.kind==='past'?'Past action':act.kind==='current'?'Current action':'Follow-up')+'</span>'+(act.kind==='next'?'<div class="act-check '+(act.done?'checked':'')+'" data-toggle="'+l.id+'|'+act.id+'">'+(act.done?'<i class="ti ti-check" style="font-size:10px;color:var(--bg)"></i>':'')+'</div>':'')+'</div><button class="btn btn-sm btn-danger" data-del-action="'+act.id+'" style="padding:2px 7px;font-size:11px"><i class="ti ti-x" style="font-size:11px"></i></button></div></div></div>';
+  var l=DB.leads[S.leadId];if(!l)return'';
+  var la=(l.accounts||[]).map(function(id){return DB.accounts[id]}).filter(Boolean);
+  var fromAcc=S.fromAcc?DB.accounts[S.fromAcc]:null;
+  var actions=(l.actions||[]).slice().sort(function(a,b){return a.date<b.date?-1:1});
+
+  var actHTML=actions.length?'<div style="margin-top:10px">'+actions.map(function(act,i){
+    var dotCls=act.done?'tl-dot-done':act.kind==='past'?'tl-dot-past':act.kind==='next'?'tl-dot-next':'tl-dot-cur';
+    var kindCls=act.done?'kind-done':act.kind==='past'?'kind-past':act.kind==='current'?'kind-current':'kind-next';
+    var kindLabel=act.done?'✓ Done':act.kind==='past'?'Past action':act.kind==='current'?'Current action':'Follow-up';
+    var checkBtn=act.kind==='next'?'<div class="act-check '+(act.done?'checked':'')+'" data-toggle="'+esc(l.id)+'|'+esc(act.id)+'">'+(act.done?'<i class="ti ti-check" style="font-size:10px;color:var(--bg)"></i>':'')+'</div>':'';
+    return '<div class="tl-item">'
+      +'<div class="tl-lw"><div class="tl-dot '+dotCls+'"></div>'+(i<actions.length-1?'<div class="tl-vline"></div>':'')+'</div>'
+      +'<div class="tl-c">'
+      +'<div class="tl-date">'+esc(act.date)+'</div>'
+      +'<div style="font-size:13px;'+(act.done?'text-decoration:line-through;color:var(--text3)':'')+'">'+esc(act.text)+'</div>'
+      +'<div style="display:flex;align-items:center;justify-content:space-between;margin-top:4px;flex-wrap:wrap;gap:4px">'
+      +'<div style="display:flex;align-items:center;gap:6px"><span class="tkind '+kindCls+'">'+kindLabel+'</span>'+checkBtn+'</div>'
+      +'<button class="btn btn-sm btn-danger" data-del-action="'+esc(act.id)+'" style="padding:2px 7px;font-size:11px"><i class="ti ti-x" style="font-size:11px"></i></button>'
+      +'</div></div></div>';
   }).join('')+'</div>':'<div style="font-size:13px;color:var(--text3);padding:8px 0">No actions logged yet.</div>';
-  let laHTML=la.length?la.map(function(a){return'<div class="chip" data-acc="'+a.id+'"><div style="display:flex;align-items:center;gap:8px"><div class="av '+(CC[a.color]||'av-g')+'" style="width:26px;height:26px;font-size:10px;border-radius:6px">'+ini(a.name)+'</div><div><div style="font-size:13px;font-weight:500">'+a.name+'</div><div style="font-size:11px;color:var(--text2)">'+(a.type||'')+'</div></div></div><i class="ti ti-chevron-right" style="font-size:14px;color:var(--text3)"></i></div>';}).join(''):'<div style="font-size:13px;color:var(--text3);padding:6px 0"><span class="badge bd-gray">Else</span> Not linked to any account.</div>';
-  return '<button class="back-btn" id="back-btn"><i class="ti ti-arrow-left"></i> '+(fromAcc?fromAcc.name:'Back to Leads')+'</button><div class="card"><div class="card-head"><div class="card-head-l"><div class="av av-lg av-r '+(CC[l.color]||'av-g')+'">'+ini(l.name)+'</div><div><div style="font-size:15px;font-weight:600">'+l.name+'</div><div style="font-size:12px;color:var(--text2)">'+(l.position||'')+' \u00b7 '+(l.company||'')+'</div></div></div><div style="display:flex;gap:6px"><button class="btn btn-sm" data-edit-lead="'+l.id+'"><i class="ti ti-edit"></i> Edit</button><button class="btn btn-sm btn-danger" data-del-lead="'+l.id+'"><i class="ti ti-trash"></i></button></div></div><div class="card-body"><div class="sl">Contact Info</div><div class="ir"><span class="ik"><i class="ti ti-map-pin" style="font-size:12px;vertical-align:-1px;margin-right:3px"></i>Address</span><span class="iv">'+(l.address||'\u2014')+'</span></div><div class="ir"><span class="ik"><i class="ti ti-mail" style="font-size:12px;vertical-align:-1px;margin-right:3px"></i>Email</span><span class="iv iv-link">'+(l.email||'\u2014')+'</span></div><div class="ir"><span class="ik"><i class="ti ti-phone" style="font-size:12px;vertical-align:-1px;margin-right:3px"></i>Phone</span><span class="iv">'+(l.phone||'\u2014')+'</span></div><div class="ir"><span class="ik"><i class="ti ti-notes" style="font-size:12px;vertical-align:-1px;margin-right:3px"></i>Comment</span><span class="iv" style="color:var(--text2)">'+(l.comment||'\u2014')+'</span></div><div class="divider"></div><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px"><div class="sl" style="margin:0">Action History</div><button class="btn btn-sm btn-primary" id="add-action-btn"><i class="ti ti-plus"></i> Add action</button></div><div id="act-form-wrap"></div>'+actHTML+'<div class="divider"></div><div class="sl">Linked Accounts</div>'+laHTML+'</div></div>';
+
+  var laHTML=la.length?la.map(function(a){
+    return '<div class="chip" data-acc="'+esc(a.id)+'">'
+      +'<div style="display:flex;align-items:center;gap:8px">'
+      +'<div class="av '+(CC[a.color]||'av-g')+'" style="width:26px;height:26px;font-size:10px;border-radius:6px">'+ini(a.name)+'</div>'
+      +'<div><div style="font-size:13px;font-weight:500">'+esc(a.name)+'</div><div style="font-size:11px;color:var(--text2)">'+esc(a.type||'')+'</div></div></div>'
+      +'<i class="ti ti-chevron-right" style="font-size:14px;color:var(--text3)"></i></div>';
+  }).join(''):'<div style="font-size:13px;color:var(--text3);padding:6px 0"><span class="badge bd-gray">Else</span> Not linked to any account.</div>';
+
+  return '<button class="back-btn" id="back-btn"><i class="ti ti-arrow-left"></i> '+esc(fromAcc?fromAcc.name:'Back to Leads')+'</button>'
+    +'<div class="card"><div class="card-head">'
+    +'<div class="card-head-l"><div class="av av-lg av-r '+(CC[l.color]||'av-g')+'">'+ini(l.name)+'</div>'
+    +'<div><div style="font-size:15px;font-weight:600">'+esc(l.name)+'</div><div style="font-size:12px;color:var(--text2)">'+esc(l.position||'')+' · '+esc(l.company||'')+'</div></div></div>'
+    +'<div style="display:flex;gap:6px"><button class="btn btn-sm" data-edit-lead="'+esc(l.id)+'"><i class="ti ti-edit"></i> Edit</button>'
+    +'<button class="btn btn-sm btn-danger" data-del-lead="'+esc(l.id)+'"><i class="ti ti-trash"></i></button></div></div>'
+    +'<div class="card-body"><div class="sl">Contact Info</div>'
+    +'<div class="ir"><span class="ik"><i class="ti ti-map-pin" style="font-size:12px;vertical-align:-1px;margin-right:3px"></i>Address</span><span class="iv">'+esc(l.address||'—')+'</span></div>'
+    +'<div class="ir"><span class="ik"><i class="ti ti-mail" style="font-size:12px;vertical-align:-1px;margin-right:3px"></i>Email</span><span class="iv iv-link">'+esc(l.email||'—')+'</span></div>'
+    +'<div class="ir"><span class="ik"><i class="ti ti-phone" style="font-size:12px;vertical-align:-1px;margin-right:3px"></i>Phone</span><span class="iv">'+esc(l.phone||'—')+'</span></div>'
+    +'<div class="ir"><span class="ik"><i class="ti ti-notes" style="font-size:12px;vertical-align:-1px;margin-right:3px"></i>Comment</span><span class="iv" style="color:var(--text2)">'+esc(l.comment||'—')+'</span></div>'
+    +'<div class="divider"></div>'
+    +'<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">'
+    +'<div class="sl" style="margin:0">Action History</div>'
+    +'<button class="btn btn-sm btn-primary" id="add-action-btn"><i class="ti ti-plus"></i> Add action</button></div>'
+    +'<div id="act-form-wrap"></div>'+actHTML
+    +'<div class="divider"></div><div class="sl">Linked Accounts</div>'+laHTML+'</div></div>';
 }
+
+/* ── import ────────────────────────────────────────── */
 function renderImport(){
-  return '<div class="page-header"><div class="page-title">Import Leads</div></div><div class="card" style="margin-bottom:14px"><div class="card-body"><div class="upload-zone" id="upload-zone"><i class="ti ti-file-spreadsheet"></i><div style="font-size:14px;font-weight:500;color:var(--text);margin-bottom:4px">Drop Excel or CSV here</div><div style="font-size:12px;color:var(--text3);margin-bottom:14px">or click to browse</div><button class="btn btn-primary btn-sm" onclick="document.getElementById(\'file-input\').click()"><i class="ti ti-upload"></i> Choose file</button><input type="file" id="file-input" accept=".csv,.xlsx,.xls" style="display:none"></div></div></div><div class="card" style="margin-bottom:14px"><div class="card-head"><div style="font-size:14px;font-weight:500">Required columns</div></div><div class="card-body"><div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px">'+['name','company','position','email','phone','address','comment'].map(c=>'<span class="badge bd-blue">'+c+'</span>').join('')+'</div><div style="font-size:12px;color:var(--text3)">\u2022 Only <strong>name</strong> is required. \u2022 Company name auto-creates/links an Account. \u2022 Existing leads with same email are skipped.</div></div></div><div id="import-preview" style="display:none"><div class="page-header"><div style="font-size:15px;font-weight:600">Preview</div><button class="btn btn-primary" id="confirm-import-btn"><i class="ti ti-check"></i> Import all</button></div><div id="preview-table"></div></div>';
+  var fieldBadges=['name','company','position','email','phone','address','comment'].map(function(c){return'<span class="badge bd-blue">'+c+'</span>'}).join('');
+  return '<div class="page-header"><div class="page-title">Import Leads</div></div>'
+    +'<div class="card" style="margin-bottom:14px"><div class="card-body">'
+    +'<div class="upload-zone" id="upload-zone">'
+    +'<i class="ti ti-file-spreadsheet"></i>'
+    +'<div style="font-size:14px;font-weight:500;color:var(--text);margin-bottom:4px">Drop Excel or CSV here</div>'
+    +'<div style="font-size:12px;color:var(--text3);margin-bottom:14px">or click to browse</div>'
+    +'<button class="btn btn-primary btn-sm" id="choose-file-btn"><i class="ti ti-upload"></i> Choose file</button>'
+    +'<input type="file" id="file-input" accept=".csv,.xlsx,.xls" style="display:none"></div></div></div>'
+    +'<div class="card" style="margin-bottom:14px"><div class="card-head"><div style="font-size:14px;font-weight:500">Required columns</div></div><div class="card-body">'
+    +'<div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px">'+fieldBadges+'</div>'
+    +'<div style="font-size:12px;color:var(--text3)">• Only <strong>name</strong> is required. • Company name auto-creates/links an Account. • Existing leads with same email are skipped.</div></div></div>'
+    +'<div id="import-preview" style="display:none">'
+    +'<div class="page-header"><div style="font-size:15px;font-weight:600">Preview</div><button class="btn btn-primary" id="confirm-import-btn"><i class="ti ti-check"></i> Import all</button></div>'
+    +'<div id="preview-table"></div></div>';
 }
+
+/* ── admin ─────────────────────────────────────────── */
 async function renderAdminAsync(el){
   el.innerHTML='<div class="page-header"><div class="page-title">User Management</div></div><div style="font-size:13px;color:var(--text3)">Loading...</div>';
-  const snap=await getDocs(collection(db,'users'));
-  const users=[];snap.forEach(d=>users.push({uid:d.id,...d.data()}));
-  const MAX=3,canAdd=users.length<MAX;
-  el.innerHTML='<div class="page-header"><div class="page-title">User Management</div></div><div class="card"><div class="card-head"><div style="font-size:14px;font-weight:500">Authorised Users <span class="badge bd-gray" style="margin-left:6px">'+users.length+'/'+MAX+'</span></div>'+(canAdd?'<button class="btn btn-sm btn-primary" id="show-add-user-btn"><i class="ti ti-plus"></i> Add User</button>':'<span style="font-size:12px;color:var(--text3)">Max '+MAX+' users</span>')+'</div><div class="card-body"><div id="add-user-form" style="display:none;background:var(--bg2);border-radius:var(--radius);padding:14px;margin-bottom:14px;border:.5px solid var(--border)"><div style="font-size:13px;font-weight:500;margin-bottom:8px">Add New User</div><div style="font-size:12px;color:var(--text3);margin-bottom:10px;line-height:1.7"><strong style="color:var(--text2)">Step 1:</strong> Go to <a href="https://console.firebase.google.com" target="_blank" style="color:var(--info-text)">Firebase Console</a> \u2192 Authentication \u2192 Add user \u2192 enter email &amp; password.<br><strong style="color:var(--text2)">Step 2:</strong> Copy the UID shown, paste below.</div><div class="field-label" style="margin-top:0">Firebase UID</div><input type="text" id="new-uid" placeholder="UID from Authentication tab"><div class="field-label">Display name</div><input type="text" id="new-name" placeholder="e.g. Jane Kim"><div class="field-label">Email</div><input type="email" id="new-email" placeholder="user@company.com"><div class="field-label">Role</div><select id="new-role"><option value="member">Member</option><option value="admin">Admin</option></select><div style="display:flex;gap:8px;justify-content:flex-end;margin-top:12px"><button class="btn btn-sm" id="cancel-add-user">Cancel</button><button class="btn btn-sm btn-primary" id="save-add-user">Add User</button></div></div>'
-    +users.map(function(u){return'<div class="user-card"><div class="user-card-info"><div class="user-av">'+ini(u.name||u.email||'?')+'</div><div><div style="font-size:13px;font-weight:500">'+(u.name||'\u2014')+(u.role==='admin'?'<span class="admin-badge">Admin</span>':'')+'</div><div style="font-size:12px;color:var(--text2)">'+(u.email||'')+'</div></div></div>'+(u.uid!==currentUser.uid?'<button class="btn btn-sm btn-danger" data-del-user="'+u.uid+'"><i class="ti ti-trash" style="font-size:13px"></i></button>':'<span style="font-size:11px;color:var(--text3)">(you)</span>')+'</div>';}).join('')
-    +'</div></div><div style="font-size:12px;color:var(--text3);padding:10px 2px;line-height:1.7"><i class="ti ti-info-circle" style="font-size:13px;vertical-align:-2px"></i> To reset a password, use Firebase Console \u2192 Authentication.</div>';
-  $('#show-add-user-btn')?.addEventListener('click',()=>{$('#add-user-form').style.display='';$('#new-uid').focus();});
-  $('#cancel-add-user')?.addEventListener('click',()=>{$('#add-user-form').style.display='none';});
-  $('#save-add-user')?.addEventListener('click',async()=>{
-    const uid2=$('#new-uid').value.trim(),name=$('#new-name').value.trim(),email=$('#new-email').value.trim(),role=$('#new-role').value;
+  var snap=await getDocs(collection(db,'users'));
+  var users=[];snap.forEach(function(d){users.push(Object.assign({uid:d.id},d.data()))});
+  var MAX=3,canAdd=users.length<MAX;
+  el.innerHTML='<div class="page-header"><div class="page-title">User Management</div></div>'
+    +'<div class="card"><div class="card-head">'
+    +'<div style="font-size:14px;font-weight:500">Authorised Users <span class="badge bd-gray" style="margin-left:6px">'+users.length+'/'+MAX+'</span></div>'
+    +(canAdd?'<button class="btn btn-sm btn-primary" id="show-add-user-btn"><i class="ti ti-plus"></i> Add User</button>':'<span style="font-size:12px;color:var(--text3)">Max '+MAX+' users</span>')
+    +'</div><div class="card-body">'
+    +'<div id="add-user-form" style="display:none;background:var(--bg2);border-radius:var(--radius);padding:14px;margin-bottom:14px;border:.5px solid var(--border)">'
+    +'<div style="font-size:13px;font-weight:500;margin-bottom:8px">Add New User</div>'
+    +'<div style="font-size:12px;color:var(--text3);margin-bottom:10px;line-height:1.7"><strong style="color:var(--text2)">Step 1:</strong> Go to <a href="https://console.firebase.google.com" target="_blank" style="color:var(--info-text)">Firebase Console</a> → Authentication → Add user → enter email &amp; password.<br><strong style="color:var(--text2)">Step 2:</strong> Copy the UID shown, paste below.</div>'
+    +'<div class="field-label" style="margin-top:0">Firebase UID</div><input type="text" id="new-uid" placeholder="UID from Authentication tab">'
+    +'<div class="field-label">Display name</div><input type="text" id="new-name" placeholder="e.g. Jane Kim">'
+    +'<div class="field-label">Email</div><input type="email" id="new-email" placeholder="user@company.com">'
+    +'<div class="field-label">Role</div><select id="new-role"><option value="member">Member</option><option value="admin">Admin</option></select>'
+    +'<div style="display:flex;gap:8px;justify-content:flex-end;margin-top:12px"><button class="btn btn-sm" id="cancel-add-user">Cancel</button><button class="btn btn-sm btn-primary" id="save-add-user">Add User</button></div></div>'
+    +users.map(function(u){
+      return '<div class="user-card"><div class="user-card-info"><div class="user-av">'+ini(u.name||u.email||'?')+'</div>'
+        +'<div><div style="font-size:13px;font-weight:500">'+esc(u.name||'—')+(u.role==='admin'?'<span class="admin-badge">Admin</span>':'')+'</div>'
+        +'<div style="font-size:12px;color:var(--text2)">'+esc(u.email||'')+'</div></div></div>'
+        +(u.uid!==currentUser.uid?'<button class="btn btn-sm btn-danger" data-del-user="'+esc(u.uid)+'"><i class="ti ti-trash" style="font-size:13px"></i></button>':'<span style="font-size:11px;color:var(--text3)">(you)</span>')
+        +'</div>';
+    }).join('')
+    +'</div></div>'
+    +'<div style="font-size:12px;color:var(--text3);padding:10px 2px;line-height:1.7"><i class="ti ti-info-circle" style="font-size:13px;vertical-align:-2px"></i> To reset a password, use Firebase Console → Authentication.</div>';
+  attachAdminEvents();
+}
+
+function attachAdminEvents(){
+  var showBtn=document.getElementById('show-add-user-btn');
+  var form=document.getElementById('add-user-form');
+  if(showBtn)showBtn.addEventListener('click',function(){form.style.display='';document.getElementById('new-uid').focus();});
+  var cancelBtn=document.getElementById('cancel-add-user');
+  if(cancelBtn)cancelBtn.addEventListener('click',function(){form.style.display='none';});
+  var saveBtn=document.getElementById('save-add-user');
+  if(saveBtn)saveBtn.addEventListener('click',async function(){
+    var uid2=document.getElementById('new-uid').value.trim();
+    var name=document.getElementById('new-name').value.trim();
+    var email=document.getElementById('new-email').value.trim();
+    var role=document.getElementById('new-role').value;
     if(!uid2||!email){toast('UID and email are required.');return;}
-    await setDoc(doc(db,'users',uid2),{name,email,role,addedBy:currentUser.email,addedAt:serverTimestamp()});
+    await setDoc(doc(db,'users',uid2),{name:name,email:email,role:role,addedBy:currentUser.email,addedAt:serverTimestamp()});
     toast('User added.');S.tab='admin';render();
   });
-  $$('[data-del-user]').forEach(el=>el.addEventListener('click',async()=>{
-    if(!confirm('Remove this user?'))return;
-    await deleteDoc(doc(db,'users',el.dataset.delUser));
-    toast('User removed.');S.tab='admin';render();
-  }));
+  document.querySelectorAll('[data-del-user]').forEach(function(el){
+    el.addEventListener('click',async function(){
+      if(!confirm('Remove this user?'))return;
+      await deleteDoc(doc(db,'users',el.dataset.delUser));
+      toast('User removed.');S.tab='admin';render();
+    });
+  });
 }
-let importRows=[];
+
+/* ── import helpers ────────────────────────────────── */
+var importRows=[];
 function processFile(file){
-  const ext=file.name.split('.').pop().toLowerCase();
-  if(ext==='csv'){const r=new FileReader();r.onload=e=>parseCSV(e.target.result);r.readAsText(file,'utf-8');}
-  else if(ext==='xlsx'||ext==='xls'){const r=new FileReader();r.onload=e=>parseXLSX(e.target.result);r.readAsArrayBuffer(file);}
+  var ext=file.name.split('.').pop().toLowerCase();
+  if(ext==='csv'){var r=new FileReader();r.onload=function(e){parseCSV(e.target.result)};r.readAsText(file,'utf-8');}
+  else if(ext==='xlsx'||ext==='xls'){var r2=new FileReader();r2.onload=function(e){parseXLSX(e.target.result)};r2.readAsArrayBuffer(file);}
   else toast('Please upload .csv, .xlsx, or .xls');
 }
 function parseCSV(text){
-  const lines=text.trim().split(/\r?\n/);
+  var lines=text.trim().split(/\r?\n/);
   if(lines.length<2){toast('File is empty.');return;}
-  const headers=lines[0].split(',').map(h=>h.trim().replace(/^"|"$/g,'').toLowerCase());
-  const rows=lines.slice(1).map(function(line){
-    const vals=[];let cur='',inq=false;
-    for(let i=0;i<line.length;i++){if(line[i]==='"')inq=!inq;else if(line[i]===','&&!inq){vals.push(cur.trim());cur='';}else cur+=line[i];}
+  var headers=lines[0].split(',').map(function(h){return h.trim().replace(/^"|"$/g,'').toLowerCase()});
+  var rows=lines.slice(1).map(function(line){
+    var vals=[],cur='',inq=false;
+    for(var i=0;i<line.length;i++){if(line[i]==='"')inq=!inq;else if(line[i]===','&&!inq){vals.push(cur.trim());cur='';}else cur+=line[i];}
     vals.push(cur.trim());
-    const obj={};headers.forEach(function(h,i){obj[h]=(vals[i]||'').trim();});
+    var obj={};headers.forEach(function(h,i){obj[h]=(vals[i]||'').trim();});
     return obj;
-  }).filter(r=>r.name);
+  }).filter(function(r){return r.name});
   showPreview(rows);
 }
 function parseXLSX(buf){
-  if(!window.XLSX){const s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js';s.onload=()=>doXLSX(buf);document.head.appendChild(s);}
+  if(!window.XLSX){var s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js';s.onload=function(){doXLSX(buf)};document.head.appendChild(s);}
   else doXLSX(buf);
 }
 function doXLSX(buf){
   try{
-    const wb=XLSX.read(buf,{type:'arraybuffer'});
-    const ws=wb.Sheets[wb.SheetNames[0]];
-    const json=XLSX.utils.sheet_to_json(ws,{defval:''});
-    const rows=json.map(function(r){const o={};Object.keys(r).forEach(function(k){o[k.toLowerCase().trim()]=String(r[k]).trim();});return o;}).filter(r=>r.name);
+    var wb=XLSX.read(buf,{type:'arraybuffer'});
+    var ws=wb.Sheets[wb.SheetNames[0]];
+    var json=XLSX.utils.sheet_to_json(ws,{defval:''});
+    var rows=json.map(function(r){var o={};Object.keys(r).forEach(function(k){o[k.toLowerCase().trim()]=String(r[k]).trim();});return o;}).filter(function(r){return r.name});
     showPreview(rows);
   }catch(e){toast('Failed to read Excel file.');}
 }
 function showPreview(rows){
   importRows=rows;
-  const existing=new Set(leads().map(l=>l.email?.toLowerCase()).filter(Boolean));
-  const preview=document.getElementById('import-preview');
-  const tbl=document.getElementById('preview-table');
+  var existing=new Set(leads().map(function(l){return l.email&&l.email.toLowerCase()}).filter(Boolean));
+  var preview=document.getElementById('import-preview');
+  var tbl=document.getElementById('preview-table');
   if(!preview||!tbl)return;
   preview.style.display='';
-  const fields=['name','company','position','email','phone','address','comment'];
-  tbl.innerHTML='<div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;font-size:12px"><thead><tr style="background:var(--bg2)">'+fields.map(f=>'<th style="padding:7px 10px;text-align:left;border:.5px solid var(--border);font-weight:500;color:var(--text2);text-transform:uppercase;font-size:10px">'+f+'</th>').join('')+'<th style="padding:7px 10px;border:.5px solid var(--border)">Status</th></tr></thead><tbody>'+rows.map(function(r){const skip=existing.has((r.email||'').toLowerCase());return'<tr style="'+(skip?'opacity:.45':'')+'">'+fields.map(f=>'<td style="padding:6px 10px;border:.5px solid var(--border)">'+(r[f]||'\u2014')+'</td>').join('')+'<td style="padding:6px 10px;border:.5px solid var(--border)">'+(skip?'<span class="badge bd-gray">Skip</span>':'<span class="badge bd-green">New</span>')+'</td></tr>';}).join('')+'</tbody></table></div>';
+  var fields=['name','company','position','email','phone','address','comment'];
+  tbl.innerHTML='<div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;font-size:12px"><thead><tr style="background:var(--bg2)">'+fields.map(function(f){return'<th style="padding:7px 10px;text-align:left;border:.5px solid var(--border);font-weight:500;color:var(--text2);text-transform:uppercase;font-size:10px">'+f+'</th>'}).join('')+'<th style="padding:7px 10px;border:.5px solid var(--border)">Status</th></tr></thead><tbody>'+rows.map(function(r){var skip=existing.has((r.email||'').toLowerCase());return'<tr style="'+(skip?'opacity:.45':'')+'">'+fields.map(function(f){return'<td style="padding:6px 10px;border:.5px solid var(--border)">'+esc(r[f]||'—')+'</td>'}).join('')+'<td style="padding:6px 10px;border:.5px solid var(--border)">'+(skip?'<span class="badge bd-gray">Skip</span>':'<span class="badge bd-green">New</span>')+'</td></tr>'}).join('')+'</tbody></table></div>';
   toast(rows.length+' rows found. Review and confirm.');
 }
 async function autoLink(companyName){
   if(!companyName)return[];
-  let match=accs().find(a=>a.name.trim().toLowerCase()===companyName.trim().toLowerCase());
+  var match=accs().find(function(a){return a.name.trim().toLowerCase()===companyName.trim().toLowerCase()});
   if(!match){
-    const obj={name:companyName.trim(),type:'Company',pic:'',email:'',phone:'',address:'',comment:'Auto-created from lead',color:COLS[Math.floor(Math.random()*COLS.length)],leads:[]};
-    const r=await addDoc(collection(db,'accounts'),obj);
-    match={...obj,id:r.id};DB.accounts[r.id]=match;
+    var obj={name:companyName.trim(),type:'Company',pic:'',email:'',phone:'',address:'',comment:'Auto-created from lead',color:COLS[Math.floor(Math.random()*COLS.length)],leads:[]};
+    var r=await addDoc(collection(db,'accounts'),obj);
+    match=Object.assign({},obj,{id:r.id});DB.accounts[r.id]=match;
     toast('Account "'+companyName+'" auto-created.');
   }
   return[match.id];
 }
 async function confirmImport(){
-  const existing=new Set(leads().map(l=>l.email?.toLowerCase()).filter(Boolean));
-  let count=0;
-  for(const r of importRows){
+  var existing=new Set(leads().map(function(l){return l.email&&l.email.toLowerCase()}).filter(Boolean));
+  var count=0;
+  for(var i=0;i<importRows.length;i++){
+    var r=importRows[i];
     if(existing.has((r.email||'').toLowerCase()))continue;
-    const accountIds=await autoLink(r.company||'');
-    const lr=await addDoc(collection(db,'leads'),{name:r.name||'',company:r.company||'',position:r.position||'',email:r.email||'',phone:r.phone||'',address:r.address||'',comment:r.comment||'',color:COLS[Math.floor(Math.random()*COLS.length)],accounts:accountIds,actions:[]});
-    if(accountIds.length){const acc=DB.accounts[accountIds[0]];if(acc)await updateDoc(doc(db,'accounts',accountIds[0]),{leads:[...(acc.leads||[]),lr.id]});}
+    var accountIds=await autoLink(r.company||'');
+    var lr=await addDoc(collection(db,'leads'),{name:r.name||'',company:r.company||'',position:r.position||'',email:r.email||'',phone:r.phone||'',address:r.address||'',comment:r.comment||'',color:COLS[Math.floor(Math.random()*COLS.length)],accounts:accountIds,actions:[]});
+    if(accountIds.length){var acc=DB.accounts[accountIds[0]];if(acc)await updateDoc(doc(db,'accounts',accountIds[0]),{leads:(acc.leads||[]).concat([lr.id])});}
     count++;
   }
   toast(count+' lead'+(count!==1?'s':'')+' imported.');
   importRows=[];S.tab='leads';S.view='list';render();
 }
+
+/* ── events ────────────────────────────────────────── */
 function attachEvents(){
-  $$('[data-tab]').forEach(el=>el.addEventListener('click',()=>{S.tab=el.dataset.tab;S.view='list';S.fromAcc=null;render();}));
-  $$('[data-acc]').forEach(el=>el.addEventListener('click',()=>{S.accId=el.dataset.acc;S.fromAcc=null;S.view='acc_detail';render();}));
-  $$('[data-lead]').forEach(el=>el.addEventListener('click',()=>{S.fromAcc=S.view==='acc_detail'?S.accId:null;S.leadId=el.dataset.lead;S.view='lead_detail';render();}));
-  $$('[data-goto-lead]').forEach(el=>el.addEventListener('click',()=>{S.fromAcc=null;S.leadId=el.dataset.gotoLead;S.view='lead_detail';render();}));
-  const back=$('#back-btn');
-  if(back)back.addEventListener('click',()=>{
+  document.querySelectorAll('[data-tab]').forEach(function(el){
+    el.addEventListener('click',function(){S.tab=el.dataset.tab;S.view='list';S.fromAcc=null;S.leadSearch='';render();});
+  });
+  document.querySelectorAll('[data-acc]').forEach(function(el){
+    el.addEventListener('click',function(){S.accId=el.dataset.acc;S.fromAcc=null;S.view='acc_detail';render();});
+  });
+  document.querySelectorAll('[data-lead]').forEach(function(el){
+    el.addEventListener('click',function(){S.fromAcc=S.view==='acc_detail'?S.accId:null;S.leadId=el.dataset.lead;S.view='lead_detail';render();});
+  });
+  document.querySelectorAll('[data-goto-lead]').forEach(function(el){
+    el.addEventListener('click',function(){S.fromAcc=null;S.leadId=el.dataset.gotoLead;S.view='lead_detail';render();});
+  });
+
+  var back=document.getElementById('back-btn');
+  if(back)back.addEventListener('click',function(){
     if(S.view==='lead_detail'&&S.fromAcc){S.view='acc_detail';S.accId=S.fromAcc;S.fromAcc=null;}
     else if(S.view==='lead_detail'){S.tab='leads';S.view='list';}
     else{S.tab='accounts';S.view='list';}
     render();
   });
-  document.getElementById('add-main-btn')?.addEventListener('click',()=>{
+
+  var addMain=document.getElementById('add-main-btn');
+  if(addMain)addMain.addEventListener('click',function(){
     if(S.tab==='accounts')openModal('add_account');
     else if(S.tab==='leads')openModal('add_lead');
   });
-  $$('[data-edit-acc]').forEach(el=>el.addEventListener('click',()=>{const a=DB.accounts[el.dataset.editAcc];openModal('edit_account',{...a,leads:[...(a.leads||[])]});}));
-  $$('[data-edit-lead]').forEach(el=>el.addEventListener('click',()=>{const l=DB.leads[el.dataset.editLead];openModal('edit_lead',{...l,accounts:[...(l.accounts||[])]});}));
-  $$('[data-del-acc]').forEach(el=>el.addEventListener('click',async()=>{if(!confirm('Delete this account?'))return;await deleteDoc(doc(db,'accounts',el.dataset.delAcc));S.tab='accounts';S.view='list';toast('Account deleted.');render();}));
-  $$('[data-del-lead]').forEach(el=>el.addEventListener('click',async()=>{if(!confirm('Delete this lead?'))return;await deleteDoc(doc(db,'leads',el.dataset.delLead));S.tab='leads';S.view='list';toast('Lead deleted.');render();}));
-  $$('[data-del-action]').forEach(el=>el.addEventListener('click',async()=>{const l=DB.leads[S.leadId];if(l){const na=(l.actions||[]).filter(a=>a.id!==el.dataset.delAction);await updateDoc(doc(db,'leads',l.id),{actions:na});toast('Action removed.');}}));
-  $$('[data-toggle]').forEach(el=>el.addEventListener('click',async function(e){
-    e.stopPropagation();
-    const parts=el.dataset.toggle.split('|');
-    const lid=parts[0],aid=parts[1];
-    const l=DB.leads[lid];if(!l)return;
-    const na=(l.actions||[]).map(a=>a.id===aid?Object.assign({},a,{done:!a.done}):a);
-    await updateDoc(doc(db,'leads',lid),{actions:na});
-    toast(na.find(a=>a.id===aid)?.done?'Marked done!':'Marked undone.');
-  }));
-  // Bulk accounts
+
+  document.querySelectorAll('[data-edit-acc]').forEach(function(el){
+    el.addEventListener('click',function(){var a=DB.accounts[el.dataset.editAcc];openModal('edit_account',Object.assign({},a,{leads:(a.leads||[]).slice()}));});
+  });
+  document.querySelectorAll('[data-edit-lead]').forEach(function(el){
+    el.addEventListener('click',function(){var l=DB.leads[el.dataset.editLead];openModal('edit_lead',Object.assign({},l,{accounts:(l.accounts||[]).slice()}));});
+  });
+  document.querySelectorAll('[data-del-acc]').forEach(function(el){
+    el.addEventListener('click',async function(){if(!confirm('Delete this account?'))return;await deleteDoc(doc(db,'accounts',el.dataset.delAcc));S.tab='accounts';S.view='list';toast('Account deleted.');render();});
+  });
+  document.querySelectorAll('[data-del-lead]').forEach(function(el){
+    el.addEventListener('click',async function(){if(!confirm('Delete this lead?'))return;await deleteDoc(doc(db,'leads',el.dataset.delLead));S.tab='leads';S.view='list';toast('Lead deleted.');render();});
+  });
+  document.querySelectorAll('[data-del-action]').forEach(function(el){
+    el.addEventListener('click',async function(){
+      var l=DB.leads[S.leadId];
+      if(l){var na=(l.actions||[]).filter(function(a){return a.id!==el.dataset.delAction});await updateDoc(doc(db,'leads',l.id),{actions:na});toast('Action removed.');}
+    });
+  });
+  document.querySelectorAll('[data-toggle]').forEach(function(el){
+    el.addEventListener('click',async function(e){
+      e.stopPropagation();
+      var parts=el.dataset.toggle.split('|');var lid=parts[0],aid=parts[1];
+      var l=DB.leads[lid];if(!l)return;
+      var na=(l.actions||[]).map(function(a){return a.id===aid?Object.assign({},a,{done:!a.done}):a});
+      await updateDoc(doc(db,'leads',lid),{actions:na});
+      var isDone=na.find(function(a){return a.id===aid});
+      toast(isDone&&isDone.done?'Marked done!':'Marked undone.');
+    });
+  });
+
+  /* lead search */
+  var searchEl=document.getElementById('lead-search');
+  if(searchEl){
+    searchEl.addEventListener('input',function(){S.leadSearch=searchEl.value;render();});
+    searchEl.addEventListener('keydown',function(e){if(e.key==='Escape'){S.leadSearch='';render();}});
+    /* keep focus after re-render */
+    setTimeout(function(){if(document.getElementById('lead-search'))document.getElementById('lead-search').focus()},0);
+  }
+
+  /* bulk accounts */
   function refreshAccBulk(){
-    const chk=Array.from($$('.ck-acc:checked'));
-    const btn=document.getElementById('bulk-del-acc-btn');
-    const cnt=document.getElementById('bulk-acc-count');
+    var chk=document.querySelectorAll('.ck-acc:checked');
+    var btn=document.getElementById('bulk-del-acc-btn');
+    var cnt=document.getElementById('bulk-acc-count');
     if(btn)btn.style.display=chk.length?'':'none';
     if(cnt)cnt.textContent=chk.length;
   }
-  $$('.ck-acc').forEach(el=>el.addEventListener('change',refreshAccBulk));
-  const saa=document.getElementById('sel-all-acc');
-  if(saa){saa.addEventListener('click',e=>e.stopPropagation());saa.addEventListener('change',function(){$$('.ck-acc').forEach(el=>{el.checked=this.checked;});refreshAccBulk();});}
-  const bdab=document.getElementById('bulk-del-acc-btn');
+  document.querySelectorAll('.ck-acc').forEach(function(el){el.addEventListener('change',refreshAccBulk);});
+  var saa=document.getElementById('sel-all-acc');
+  if(saa){saa.addEventListener('click',function(e){e.stopPropagation();});saa.addEventListener('change',function(){document.querySelectorAll('.ck-acc').forEach(function(el){el.checked=saa.checked;});refreshAccBulk();});}
+  var bdab=document.getElementById('bulk-del-acc-btn');
   if(bdab)bdab.addEventListener('click',async function(e){
     e.stopPropagation();
-    const ids=Array.from($$('.ck-acc:checked')).map(el=>el.value);
+    var ids=Array.from(document.querySelectorAll('.ck-acc:checked')).map(function(el){return el.value});
     if(!ids.length)return;
-    if(!confirm('Delete '+ids.length+' account(s)? This cannot be undone.'))return;
-    for(const id of ids)await deleteDoc(doc(db,'accounts',id));
+    if(!confirm('Delete '+ids.length+' account(s)?'))return;
+    for(var i=0;i<ids.length;i++)await deleteDoc(doc(db,'accounts',ids[i]));
     toast(ids.length+' account(s) deleted.');render();
   });
-  // Bulk leads
+
+  /* bulk leads */
   function refreshLeadBulk(){
-    const chk=Array.from($$('.ck-lead:checked'));
-    const btn=document.getElementById('bulk-del-lead-btn');
-    const cnt=document.getElementById('bulk-lead-count');
+    var chk=document.querySelectorAll('.ck-lead:checked');
+    var btn=document.getElementById('bulk-del-lead-btn');
+    var cnt=document.getElementById('bulk-lead-count');
     if(btn)btn.style.display=chk.length?'':'none';
     if(cnt)cnt.textContent=chk.length;
   }
-  $$('.ck-lead').forEach(el=>el.addEventListener('change',refreshLeadBulk));
-  const sal=document.getElementById('sel-all-lead');
-  if(sal){sal.addEventListener('click',e=>e.stopPropagation());sal.addEventListener('change',function(){$$('.ck-lead').forEach(el=>{el.checked=this.checked;});refreshLeadBulk();});}
-  const bdlb=document.getElementById('bulk-del-lead-btn');
+  document.querySelectorAll('.ck-lead').forEach(function(el){el.addEventListener('change',refreshLeadBulk);});
+  var sal=document.getElementById('sel-all-lead');
+  if(sal){sal.addEventListener('click',function(e){e.stopPropagation();});sal.addEventListener('change',function(){document.querySelectorAll('.ck-lead').forEach(function(el){el.checked=sal.checked;});refreshLeadBulk();});}
+  var bdlb=document.getElementById('bulk-del-lead-btn');
   if(bdlb)bdlb.addEventListener('click',async function(e){
     e.stopPropagation();
-    const ids=Array.from($$('.ck-lead:checked')).map(el=>el.value);
+    var ids=Array.from(document.querySelectorAll('.ck-lead:checked')).map(function(el){return el.value});
     if(!ids.length)return;
-    if(!confirm('Delete '+ids.length+' lead(s)? This cannot be undone.'))return;
-    for(const id of ids){
-      await deleteDoc(doc(db,'leads',id));
-      for(const a of accs()){if((a.leads||[]).includes(id))await updateDoc(doc(db,'accounts',a.id),{leads:(a.leads||[]).filter(x=>x!==id)});}
+    if(!confirm('Delete '+ids.length+' lead(s)?'))return;
+    for(var i=0;i<ids.length;i++){
+      await deleteDoc(doc(db,'leads',ids[i]));
+      for(var j=0;j<accs().length;j++){var a=accs()[j];if((a.leads||[]).indexOf(ids[i])>-1)await updateDoc(doc(db,'accounts',a.id),{leads:(a.leads||[]).filter(function(x){return x!==ids[i]})});}
     }
     toast(ids.length+' lead(s) deleted.');render();
   });
-  // Calendar
-  $('#cal-prev')?.addEventListener('click',()=>{S.calMonth--;if(S.calMonth<0){S.calMonth=11;S.calYear--;}render();});
-  $('#cal-next')?.addEventListener('click',()=>{S.calMonth++;if(S.calMonth>11){S.calMonth=0;S.calYear++;}render();});
-  $('#cal-today')?.addEventListener('click',()=>{S.calYear=new Date().getFullYear();S.calMonth=new Date().getMonth();render();});
-  // Add action
-  const aab=$('#add-action-btn');
-  if(aab)aab.addEventListener('click',()=>{
-    const wrap=$('#act-form-wrap');
+
+  /* calendar */
+  var cp=document.getElementById('cal-prev');if(cp)cp.addEventListener('click',function(){S.calMonth--;if(S.calMonth<0){S.calMonth=11;S.calYear--;}render();});
+  var cn=document.getElementById('cal-next');if(cn)cn.addEventListener('click',function(){S.calMonth++;if(S.calMonth>11){S.calMonth=0;S.calYear++;}render();});
+  var ct=document.getElementById('cal-today');if(ct)ct.addEventListener('click',function(){S.calYear=new Date().getFullYear();S.calMonth=new Date().getMonth();render();});
+
+  /* add action */
+  var aab=document.getElementById('add-action-btn');
+  if(aab)aab.addEventListener('click',function(){
+    var wrap=document.getElementById('act-form-wrap');
     if(!wrap||wrap.innerHTML)return;
     wrap.innerHTML='<div class="act-form"><div class="form-row"><div><div class="field-label">Date</div><input id="act-date" type="date" value="'+todayStr()+'"></div><div><div class="field-label">Type</div><select id="act-kind"><option value="past">Past action</option><option value="current" selected>Current action</option><option value="next">Follow-up</option></select></div></div><div class="field-label">Description</div><textarea id="act-text" placeholder="Describe the action..."></textarea><div style="display:flex;gap:6px;justify-content:flex-end;margin-top:8px"><button class="btn btn-sm" id="act-cancel">Cancel</button><button class="btn btn-sm btn-primary" id="act-save">Save</button></div></div>';
-    $('#act-cancel').addEventListener('click',()=>{wrap.innerHTML='';});
-    $('#act-save').addEventListener('click',async()=>{
-      const text=$('#act-text').value.trim(),date=$('#act-date').value,kind=$('#act-kind').value;
+    document.getElementById('act-cancel').addEventListener('click',function(){wrap.innerHTML='';});
+    document.getElementById('act-save').addEventListener('click',async function(){
+      var text=document.getElementById('act-text').value.trim();
+      var date=document.getElementById('act-date').value;
+      var kind=document.getElementById('act-kind').value;
       if(!text||!date)return;
-      const l=DB.leads[S.leadId];
-      if(l){const na=[...(l.actions||[]),{id:uid(),date,kind,text,done:false}];await updateDoc(doc(db,'leads',l.id),{actions:na});toast('Action saved.');}
+      var l=DB.leads[S.leadId];
+      if(l){var na=(l.actions||[]).concat([{id:uid(),date:date,kind:kind,text:text,done:false}]);await updateDoc(doc(db,'leads',l.id),{actions:na});toast('Action saved.');}
     });
   });
-  // Import file
-  const uz=$('#upload-zone'),fi=$('#file-input');
+
+  /* import drag/drop */
+  var uz=document.getElementById('upload-zone'),fi=document.getElementById('file-input');
+  var cfb=document.getElementById('choose-file-btn');if(cfb)cfb.addEventListener('click',function(){fi&&fi.click();});
   if(uz&&fi){
-    uz.addEventListener('dragover',e=>{e.preventDefault();uz.classList.add('drag');});
-    uz.addEventListener('dragleave',()=>uz.classList.remove('drag'));
-    uz.addEventListener('drop',e=>{e.preventDefault();uz.classList.remove('drag');if(e.dataTransfer.files[0])processFile(e.dataTransfer.files[0]);});
-    fi.addEventListener('change',()=>{if(fi.files[0])processFile(fi.files[0]);});
+    uz.addEventListener('dragover',function(e){e.preventDefault();uz.classList.add('drag');});
+    uz.addEventListener('dragleave',function(){uz.classList.remove('drag');});
+    uz.addEventListener('drop',function(e){e.preventDefault();uz.classList.remove('drag');if(e.dataTransfer.files[0])processFile(e.dataTransfer.files[0]);});
+    fi.addEventListener('change',function(){if(fi.files[0])processFile(fi.files[0]);});
   }
-  $('#confirm-import-btn')?.addEventListener('click',confirmImport);
-  document.getElementById('export-btn')?.addEventListener('click',exportCSV);
-  document.getElementById('sb-export')?.addEventListener('click',exportCSV);
-  document.getElementById('modal-overlay')?.addEventListener('click',e=>{if(e.target===e.currentTarget)closeModal();});
+  var cib=document.getElementById('confirm-import-btn');if(cib)cib.addEventListener('click',confirmImport);
+
+  var xBtn=document.getElementById('export-btn');if(xBtn)xBtn.addEventListener('click',exportCSV);
+  var xBtn2=document.getElementById('sb-export');if(xBtn2)xBtn2.addEventListener('click',exportCSV);
+  var mo=document.getElementById('modal-overlay');if(mo)mo.addEventListener('click',function(e){if(e.target===e.currentTarget)closeModal();});
 }
+
+/* ── modals ────────────────────────────────────────── */
 function openModal(type,data){
   document.getElementById('modal-overlay').style.display='flex';
-  const body=document.getElementById('modal-body');
+  var body=document.getElementById('modal-body');
   if(type==='add_account'||type==='edit_account'){
-    const d=data||{};
+    var d=data||{};
     body.innerHTML='<div class="modal-title">'+(type==='add_account'?'New Account':'Edit Account')+'</div>'
-      +'<div class="field-label">Company name *</div><input id="f-name" type="text" value="'+(d.name||'')+'">'
-      +'<div class="field-label">Type</div><input id="f-type" type="text" placeholder="Company / Exhibition / KOICA / etc." value="'+(d.type||'')+'">'
-      +'<div class="field-label">Person in charge (PIC)</div><input id="f-pic" type="text" value="'+(d.pic||'')+'">'
-      +'<div class="field-label">Email</div><input id="f-email" type="text" value="'+(d.email||'')+'">'
-      +'<div class="field-label">Phone</div><input id="f-phone" type="text" value="'+(d.phone||'')+'">'
-      +'<div class="field-label">Address</div><input id="f-address" type="text" value="'+(d.address||'')+'">'
-      +'<div class="field-label">Comment</div><textarea id="f-comment">'+(d.comment||'')+'</textarea>'
+      +'<div class="field-label">Company name *</div><input id="f-name" type="text" value="'+esc(d.name||'')+'">'
+      +'<div class="field-label">Type</div><input id="f-type" type="text" placeholder="Company / Exhibition / KOICA / etc." value="'+esc(d.type||'')+'">'
+      +'<div class="field-label">Person in charge (PIC)</div><input id="f-pic" type="text" value="'+esc(d.pic||'')+'">'
+      +'<div class="field-label">Email</div><input id="f-email" type="text" value="'+esc(d.email||'')+'">'
+      +'<div class="field-label">Phone</div><input id="f-phone" type="text" value="'+esc(d.phone||'')+'">'
+      +'<div class="field-label">Address</div><input id="f-address" type="text" value="'+esc(d.address||'')+'">'
+      +'<div class="field-label">Comment</div><textarea id="f-comment">'+esc(d.comment||'')+'</textarea>'
       +'<div class="modal-footer"><button class="btn" id="m-cancel">Cancel</button><button class="btn btn-primary" id="m-save">Save</button></div>';
-    $('#m-cancel').onclick=closeModal;
-    $('#m-save').onclick=async()=>{
-      const name=$('#f-name').value.trim();if(!name){alert('Company name is required.');return;}
-      const obj={name,type:$('#f-type').value.trim(),pic:$('#f-pic').value.trim(),email:$('#f-email').value.trim(),phone:$('#f-phone').value.trim(),address:$('#f-address').value.trim(),comment:$('#f-comment').value.trim(),color:data?.color||COLS[Math.floor(Math.random()*COLS.length)],leads:data?.leads||[]};
-      if(type==='add_account'){const r=await addDoc(collection(db,'accounts'),obj);S.accId=r.id;}
+    document.getElementById('m-cancel').onclick=closeModal;
+    document.getElementById('m-save').onclick=async function(){
+      var name=document.getElementById('f-name').value.trim();if(!name){alert('Company name is required.');return;}
+      var obj={name:name,type:document.getElementById('f-type').value.trim(),pic:document.getElementById('f-pic').value.trim(),email:document.getElementById('f-email').value.trim(),phone:document.getElementById('f-phone').value.trim(),address:document.getElementById('f-address').value.trim(),comment:document.getElementById('f-comment').value.trim(),color:(data&&data.color)||COLS[Math.floor(Math.random()*COLS.length)],leads:(data&&data.leads)||[]};
+      if(type==='add_account'){var r=await addDoc(collection(db,'accounts'),obj);S.accId=r.id;}
       else{await updateDoc(doc(db,'accounts',data.id),obj);S.accId=data.id;}
       closeModal();if(type==='edit_account')S.view='acc_detail';else{S.tab='accounts';S.view='list';}
       toast('Account saved.');
     };
   } else if(type==='add_lead'||type==='edit_lead'){
-    const d=data||{};
-    const selIds=d.accounts||[];
-    const checks=accs().map(a=>'<label><input type="checkbox" class="acc-ck" value="'+a.id+'" '+(selIds.includes(a.id)?'checked':'')+'>'+a.name+'</label>').join('');
+    var d2=data||{};
+    var selIds=d2.accounts||[];
+    var checks=accs().map(function(a){return'<label><input type="checkbox" class="acc-ck" value="'+esc(a.id)+'" '+(selIds.indexOf(a.id)>-1?'checked':'')+'>'+esc(a.name)+'</label>'}).join('');
     body.innerHTML='<div class="modal-title">'+(type==='add_lead'?'New Lead':'Edit Lead')+'</div>'
-      +'<div class="field-label">Full name *</div><input id="f-name" type="text" value="'+(d.name||'')+'">'
-      +'<div class="field-label">Company</div><input id="f-company" type="text" value="'+(d.company||'')+'">'
-      +'<div class="field-label">Position</div><input id="f-position" type="text" value="'+(d.position||'')+'">'
-      +'<div class="field-label">Email</div><input id="f-email" type="text" value="'+(d.email||'')+'">'
-      +'<div class="field-label">Phone</div><input id="f-phone" type="text" value="'+(d.phone||'')+'">'
-      +'<div class="field-label">Address</div><input id="f-address" type="text" value="'+(d.address||'')+'">'
-      +'<div class="field-label">Comment</div><textarea id="f-comment">'+(d.comment||'')+'</textarea>'
+      +'<div class="field-label">Full name *</div><input id="f-name" type="text" value="'+esc(d2.name||'')+'">'
+      +'<div class="field-label">Company</div><input id="f-company" type="text" value="'+esc(d2.company||'')+'">'
+      +'<div class="field-label">Position</div><input id="f-position" type="text" value="'+esc(d2.position||'')+'">'
+      +'<div class="field-label">Email</div><input id="f-email" type="text" value="'+esc(d2.email||'')+'">'
+      +'<div class="field-label">Phone</div><input id="f-phone" type="text" value="'+esc(d2.phone||'')+'">'
+      +'<div class="field-label">Address</div><input id="f-address" type="text" value="'+esc(d2.address||'')+'">'
+      +'<div class="field-label">Comment</div><textarea id="f-comment">'+esc(d2.comment||'')+'</textarea>'
       +'<div class="field-label">Link to Accounts</div>'
       +'<div class="acc-ck-list">'+(checks||'<span style="font-size:12px;color:var(--text3)">No accounts yet</span>')+'</div>'
       +'<div class="modal-footer"><button class="btn" id="m-cancel">Cancel</button><button class="btn btn-primary" id="m-save">Save</button></div>';
-    $('#m-cancel').onclick=closeModal;
-    $('#m-save').onclick=async()=>{
-      const name=$('#f-name').value.trim();if(!name){alert('Name is required.');return;}
-      let selAccIds=Array.from(document.querySelectorAll('.acc-ck:checked')).map(el=>el.value);
-      const companyName=$('#f-company').value.trim();
-      const obj={name,company:companyName,position:$('#f-position').value.trim(),email:$('#f-email').value.trim(),phone:$('#f-phone').value.trim(),address:$('#f-address').value.trim(),comment:$('#f-comment').value.trim(),color:data?.color||COLS[Math.floor(Math.random()*COLS.length)],accounts:selAccIds,actions:data?.actions||[]};
-      let leadId=data?.id;
-      if(type==='add_lead'){const r=await addDoc(collection(db,'leads'),obj);leadId=r.id;}
+    document.getElementById('m-cancel').onclick=closeModal;
+    document.getElementById('m-save').onclick=async function(){
+      var name=document.getElementById('f-name').value.trim();if(!name){alert('Name is required.');return;}
+      var selAccIds=Array.from(document.querySelectorAll('.acc-ck:checked')).map(function(el){return el.value});
+      var companyName=document.getElementById('f-company').value.trim();
+      var obj={name:name,company:companyName,position:document.getElementById('f-position').value.trim(),email:document.getElementById('f-email').value.trim(),phone:document.getElementById('f-phone').value.trim(),address:document.getElementById('f-address').value.trim(),comment:document.getElementById('f-comment').value.trim(),color:(data&&data.color)||COLS[Math.floor(Math.random()*COLS.length)],accounts:selAccIds,actions:(data&&data.actions)||[]};
+      var leadId=data&&data.id;
+      if(type==='add_lead'){var r=await addDoc(collection(db,'leads'),obj);leadId=r.id;}
       else await updateDoc(doc(db,'leads',data.id),obj);
-      if(companyName){
-        const autoIds=await autoLink(companyName);
-        autoIds.forEach(id=>{if(!selAccIds.includes(id))selAccIds.push(id);});
+      if(companyName){var autoIds=await autoLink(companyName);autoIds.forEach(function(id){if(selAccIds.indexOf(id)===-1)selAccIds.push(id);});}
+      for(var i=0;i<accs().length;i++){
+        var a=accs()[i];
+        var had=(a.leads||[]).indexOf(leadId)>-1,has=selAccIds.indexOf(a.id)>-1;
+        if(has&&!had)await updateDoc(doc(db,'accounts',a.id),{leads:(a.leads||[]).concat([leadId])});
+        if(!has&&had)await updateDoc(doc(db,'accounts',a.id),{leads:(a.leads||[]).filter(function(x){return x!==leadId})});
       }
-      for(const a of accs()){
-        const had=(a.leads||[]).includes(leadId),has=selAccIds.includes(a.id);
-        if(has&&!had)await updateDoc(doc(db,'accounts',a.id),{leads:[...(a.leads||[]),leadId]});
-        if(!has&&had)await updateDoc(doc(db,'accounts',a.id),{leads:(a.leads||[]).filter(id=>id!==leadId)});
-      }
-      if(JSON.stringify(selAccIds.sort())!==JSON.stringify(obj.accounts.slice().sort()))await updateDoc(doc(db,'leads',leadId),{accounts:selAccIds});
+      var curAcc=(await getDoc(doc(db,'leads',leadId))).data();
+      if(JSON.stringify((curAcc&&curAcc.accounts||[]).sort())!==JSON.stringify(selAccIds.slice().sort()))await updateDoc(doc(db,'leads',leadId),{accounts:selAccIds});
       closeModal();S.leadId=leadId;
       if(type==='edit_lead')S.view='lead_detail';else{S.tab='leads';S.view='list';}
       toast('Lead saved.');
@@ -675,18 +957,20 @@ function openModal(type,data){
   }
 }
 function closeModal(){document.getElementById('modal-overlay').style.display='none';}
+
+/* ── export CSV ────────────────────────────────────── */
 function exportCSV(){
-  const e=v=>'"'+String(v||'').replace(/"/g,'""')+'"';
-  let csv='GLS GB - CRM Export\r\n\r\n';
+  function e(v){return'"'+String(v||'').replace(/"/g,'""')+'"'}
+  var csv='GLS GB - CRM Export\r\n\r\n';
   csv+='=== ACCOUNTS ===\r\nID,Company,Type,PIC,Email,Phone,Address,Comment,Linked Leads\r\n';
-  accs().forEach(a=>{csv+=[a.id,a.name,a.type,a.pic,a.email,a.phone,a.address,a.comment,(a.leads||[]).length].map(e).join(',')+'\r\n';});
+  accs().forEach(function(a){csv+=[a.id,a.name,a.type,a.pic,a.email,a.phone,a.address,a.comment,(a.leads||[]).length].map(e).join(',')+'\r\n';});
   csv+='\r\n=== LEADS ===\r\nID,Name,Company,Position,Email,Phone,Address,Comment,Linked Accounts\r\n';
-  leads().forEach(l=>{const an=(l.accounts||[]).map(id=>DB.accounts[id]?.name).filter(Boolean).join('; ');csv+=[l.id,l.name,l.company,l.position,l.email,l.phone,l.address,l.comment,an||'Unlinked'].map(e).join(',')+'\r\n';});
+  leads().forEach(function(l){var an=(l.accounts||[]).map(function(id){return DB.accounts[id]&&DB.accounts[id].name}).filter(Boolean).join('; ');csv+=[l.id,l.name,l.company,l.position,l.email,l.phone,l.address,l.comment,an||'Unlinked'].map(e).join(',')+'\r\n';});
   csv+='\r\n=== ACTIONS ===\r\nLead ID,Lead Name,Date,Type,Done,Description\r\n';
-  leads().forEach(l=>{[...(l.actions||[])].sort((a,b)=>a.date<b.date?-1:1).forEach(act=>{csv+=[l.id,l.name,act.date,act.kind==='past'?'Past action':act.kind==='current'?'Current action':'Follow-up',act.done?'Yes':'No',act.text].map(e).join(',')+'\r\n';});});
-  const blob=new Blob(['\uFEFF'+csv],{type:'text/csv;charset=utf-8'});
-  const url=URL.createObjectURL(blob);
-  const a=document.createElement('a');a.href=url;a.download='GLS_GB_CRM_Export_'+todayStr()+'.csv';
+  leads().forEach(function(l){(l.actions||[]).slice().sort(function(a,b){return a.date<b.date?-1:1}).forEach(function(act){csv+=[l.id,l.name,act.date,act.kind==='past'?'Past action':act.kind==='current'?'Current action':'Follow-up',act.done?'Yes':'No',act.text].map(e).join(',')+'\r\n';});});
+  var blob=new Blob(['\uFEFF'+csv],{type:'text/csv;charset=utf-8'});
+  var url=URL.createObjectURL(blob);
+  var a=document.createElement('a');a.href=url;a.download='GLS_GB_CRM_Export_'+todayStr()+'.csv';
   document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);
   toast('CSV exported.');
 }
