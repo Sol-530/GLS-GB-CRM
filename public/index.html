@@ -362,6 +362,14 @@ function renderDashboard(){
   }
 
   var pHTML=pending.length?pending.map(mkCard).join(''):'<div style="padding:12px;text-align:center;font-size:13px;color:var(--text3);background:var(--bg2);border-radius:var(--radius)">No pending actions — all clear ✓</div>';
+  // work type counts
+  var tevAll=Object.values(DB.teamEvents||{});
+  var wtCounts={'Premove Survey':0,'Meeting':0,'Move':0,'Document':0};
+  tevAll.forEach(function(e){if(wtCounts.hasOwnProperty(e.workType))wtCounts[e.workType]++;});
+  var wtColors={'Premove Survey':'#185FA5','Meeting':'#0F6E56','Move':'#854F0B','Document':'#993C1D'};
+  var wtBg={'Premove Survey':'#E6F1FB','Meeting':'#E1F5EE','Move':'#FAEEDA','Document':'#FAECE7'};
+  var wtGrid=Object.keys(wtCounts).map(function(wt){return'<div class="metric" style="border-left:3px solid '+wtColors[wt]+';padding:12px 14px"><div class="metric-label" style="color:'+wtColors[wt]+'">'+wt+'</div><div class="metric-val">'+wtCounts[wt]+'</div></div>';}).join('');
+
   var rLeads=leads().slice(-4).reverse();
   return '<div class="page-header"><div class="page-title">Dashboard</div><div style="font-size:12px;color:var(--text3)">'+new Date().toLocaleDateString('en-GB',{weekday:'short',year:'numeric',month:'short',day:'numeric'})+'</div></div>'
     +'<div class="metric-grid">'
@@ -369,6 +377,8 @@ function renderDashboard(){
     +'<div class="metric"><div class="metric-label">Leads</div><div class="metric-val">'+leads().length+'</div></div>'
     +'<div class="metric"><div class="metric-label">Actions logged</div><div class="metric-val">'+totalAct+'</div></div>'
     +'<div class="metric"><div class="metric-label">Overdue</div><div class="metric-val '+(ov?'danger':'')+'">'+ov+'</div></div></div>'
+    +'<div style="font-size:10px;font-weight:600;color:var(--text3);letter-spacing:.07em;text-transform:uppercase;margin-bottom:8px;margin-top:2px">Team Events</div>'
+    +'<div class="metric-grid">'+wtGrid+'</div>'
     +'<div class="section-head"><div class="sl" style="margin:0">Pending actions ('+pending.length+') <span style="font-size:11px;color:var(--text3);font-weight:400">— click ☐ to mark done</span></div></div>'
     +pHTML
     +(done.length?'<div class="section-head"><div class="sl" style="margin:0;color:var(--text3)">Completed ('+done.length+')</div></div>'+done.map(mkCard).join(''):'')
