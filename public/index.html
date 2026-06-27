@@ -141,15 +141,16 @@ textarea{resize:vertical;min-height:56px}
 .cal-wrap{background:var(--bg);border:.5px solid var(--border);border-radius:var(--radius-lg);overflow:hidden}
 .cal-header{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:.5px solid var(--border)}
 .cal-title{font-size:15px;font-weight:600}
-.cal-grid{display:grid;grid-template-columns:repeat(7,1fr)}
-.cal-dow{text-align:center;font-size:11px;font-weight:600;color:var(--text3);padding:8px 2px;letter-spacing:.04em;text-transform:uppercase}
-.cal-cell{height:96px;border-top:.5px solid var(--border);border-right:.5px solid var(--border);padding:5px;overflow:hidden;display:flex;flex-direction:column}
-.cal-cell:nth-child(7n){border-right:none}
-.cal-day-num{font-size:11px;font-weight:500;color:var(--text2);margin-bottom:2px;flex-shrink:0;line-height:1}
-.cal-day-num.today-num{width:20px;height:20px;background:var(--text);color:var(--bg);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600}
+.cal-grid{display:table;table-layout:fixed;width:100%;border-collapse:collapse}
+.cal-grid-row{display:table-row}
+.cal-dow{display:table-cell;text-align:center;font-size:11px;font-weight:600;color:var(--text3);padding:8px 2px;letter-spacing:.04em;text-transform:uppercase;width:14.2857%}
+.cal-cell{display:table-cell;width:14.2857%;height:90px;max-height:90px;border-top:.5px solid var(--border);border-right:.5px solid var(--border);padding:5px;vertical-align:top;overflow:hidden;box-sizing:border-box}
+.cal-cell:last-child{border-right:none}
+.cal-day-num{font-size:11px;font-weight:500;color:var(--text2);margin-bottom:3px;line-height:1;display:block}
+.cal-day-num.today-num{width:20px;height:20px;background:var(--text);color:var(--bg);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:600}
 .cal-day-num.other-month{color:var(--text3)}
-.cal-events-wrap{flex:1;overflow:hidden;display:flex;flex-direction:column;gap:2px;min-height:0}
-.cal-event{font-size:9.5px;font-weight:500;padding:2px 4px;border-radius:3px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;word-break:break-word;line-height:1.3;flex-shrink:0}
+.cal-events-wrap{overflow:hidden;max-height:66px;display:flex;flex-direction:column;gap:2px}
+.cal-event{font-size:9.5px;font-weight:500;padding:2px 4px;border-radius:3px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;display:block;flex-shrink:0;max-width:100%}
 .ev-next{background:#E6F1FB;color:#185FA5}
 .ev-current{background:#E1F5EE;color:#0F6E56}
 .ev-overdue{background:#FCEBEB;color:#A32D2D}
@@ -202,7 +203,8 @@ textarea{resize:vertical;min-height:56px}
     <div class="sidebar no-print">
       <div class="nav-section">Navigation</div>
       <button class="nav-item active" data-tab="dashboard"><i class="ti ti-layout-dashboard"></i>Dashboard</button>
-      <button class="nav-item" data-tab="calendar"><i class="ti ti-calendar"></i>Calendar</button>
+      <button class="nav-item" data-tab="calendar"><i class="ti ti-calendar"></i>Lead Calendar</button>
+      <button class="nav-item" data-tab="teamcal"><i class="ti ti-calendar-event"></i>Team Calendar</button>
       <button class="nav-item" data-tab="accounts"><i class="ti ti-building"></i>Accounts<span class="nav-badge" id="nb-acc">0</span></button>
       <button class="nav-item" data-tab="leads"><i class="ti ti-users"></i>Leads<span class="nav-badge" id="nb-leads">0</span></button>
       <div class="nav-section" style="margin-top:auto">Admin</div>
@@ -243,8 +245,8 @@ function clearErr(){var e=document.getElementById('auth-err');if(e)e.classList.r
 /* ── state ─────────────────────────────────────────── */
 var currentUser=null,isAdmin=false;
 var DB={accounts:{},leads:{}};
-var unsubAcc=null,unsubLeads=null;
-var S={tab:'dashboard',view:'list',accId:null,leadId:null,fromAcc:null,calYear:new Date().getFullYear(),calMonth:new Date().getMonth(),leadSearch:''};
+var unsubAcc=null,unsubLeads=null,unsubTeam=null;
+var S={tab:'dashboard',view:'list',accId:null,leadId:null,fromAcc:null,calYear:new Date().getFullYear(),calMonth:new Date().getMonth(),leadSearch:'',accSearch:'',tcYear:new Date().getFullYear(),tcMonth:new Date().getMonth()};
 
 /* ── auth ──────────────────────────────────────────── */
 onAuthStateChanged(auth,async function(user){
@@ -284,7 +286,7 @@ function startListeners(){
   unsubAcc=onSnapshot(collection(db,'accounts'),function(snap){DB.accounts={};snap.forEach(function(d){DB.accounts[d.id]=Object.assign({},d.data(),{id:d.id})});render();});
   unsubLeads=onSnapshot(collection(db,'leads'),function(snap){DB.leads={};snap.forEach(function(d){DB.leads[d.id]=Object.assign({},d.data(),{id:d.id})});render();});
 }
-function stopListeners(){if(unsubAcc)unsubAcc();if(unsubLeads)unsubLeads();}
+function stopListeners(){if(unsubAcc)unsubAcc();if(unsubLeads)unsubLeads();if(unsubTeam)unsubTeam();}
 function accs(){return Object.values(DB.accounts)}
 function leads(){return Object.values(DB.leads)}
 
@@ -303,6 +305,7 @@ function render(){
     else addBtn.style.display='none';
     if(S.tab==='dashboard')el.innerHTML=renderDashboard();
     else if(S.tab==='calendar')el.innerHTML=renderCalendar();
+    else if(S.tab==='teamcal')el.innerHTML=renderTeamCalendar();
     else if(S.tab==='accounts')el.innerHTML=renderAccList();
     else if(S.tab==='leads')el.innerHTML=renderLeadList();
     else if(S.tab==='import')el.innerHTML=renderImport();
@@ -382,15 +385,15 @@ function renderDashboard(){
     }).join('');
 }
 
-/* ── calendar ──────────────────────────────────────── */
+/* ── calendar ────────────────────────────────────────── */
 function renderCalendar(){
   var y=S.calYear,m=S.calMonth;
   var firstDay=new Date(y,m,1).getDay();
   var dim=new Date(y,m+1,0).getDate();
   var dip=new Date(y,m,0).getDate();
   var tf=todayStr();
-  var events={},allActs=[];
   var pfx=y+'-'+String(m+1).padStart(2,'0');
+  var events={},allActs=[];
   leads().forEach(function(l){
     (l.actions||[]).forEach(function(act){
       if(!act.date||!act.date.startsWith(pfx))return;
@@ -401,24 +404,37 @@ function renderCalendar(){
   });
   allActs.sort(function(a,b){return a.date<b.date?-1:1});
 
-  var cells='',cc=0;
+  var dows=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  var dowRow='<tr class="cal-grid-row">'+dows.map(function(dw){return'<th class="cal-dow">'+dw+'</th>'}).join('')+'</tr>';
+
+  // Build cells grouped into rows of 7
+  var allCells=[];
   for(var i=firstDay-1;i>=0;i--){
-    cells+='<div class="cal-cell"><div class="cal-day-num other-month">'+(dip-i)+'</div><div class="cal-events-wrap"></div></div>';cc++;
+    allCells.push('<td class="cal-cell"><div class="cal-day-num other-month">'+(dip-i)+'</div><div class="cal-events-wrap"></div></td>');
   }
   for(var d=1;d<=dim;d++){
-    var ds=y+'-'+String(m+1).padStart(2,'0')+'-'+String(d).padStart(2,'0');
+    var ds=pfx+'-'+String(d).padStart(2,'0');
     var isT=ds===tf;
     var evs=events[ds]||[];
-    var evH=evs.slice(0,2).map(function(item){
+    var dayNumHtml=isT
+      ?'<span class="cal-day-num today-num">'+d+'</span>'
+      :'<span class="cal-day-num">'+d+'</span>';
+    var evH=evs.slice(0,3).map(function(item){
       var cls=item.action.done?'ev-done':daysFrom(ds)<0?'ev-overdue':item.action.kind==='current'?'ev-current':'ev-next';
       return '<div class="cal-event '+cls+'" title="'+esc(item.lead.name)+': '+esc(item.action.text)+'">'+esc(item.lead.name)+'</div>';
     }).join('');
-    if(evs.length>2)evH+='<div style="font-size:9px;color:var(--text3);padding:1px 4px">+'+(evs.length-2)+' more</div>';
-    cells+='<div class="cal-cell"><div class="cal-day-num'+(isT?' today-num':'')+'">'+d+'</div><div class="cal-events-wrap">'+evH+'</div></div>';cc++;
+    if(evs.length>3)evH+='<div style="font-size:9px;color:var(--text3)">+'+(evs.length-3)+' more</div>';
+    allCells.push('<td class="cal-cell">'+dayNumHtml+'<div class="cal-events-wrap">'+evH+'</div></td>');
   }
-  var rem=cc%7===0?0:7-(cc%7);
-  for(var dd=1;dd<=rem;dd++){
-    cells+='<div class="cal-cell"><div class="cal-day-num other-month">'+dd+'</div><div class="cal-events-wrap"></div></div>';
+  // Pad to complete last row
+  while(allCells.length%7!==0){
+    var nd=allCells.length-firstDay-(dim-1);
+    allCells.push('<td class="cal-cell"><div class="cal-day-num other-month">'+(nd+1)+'</div><div class="cal-events-wrap"></div></td>');
+  }
+  // Group into rows
+  var rows='';
+  for(var r=0;r<allCells.length;r+=7){
+    rows+='<tr class="cal-grid-row">'+allCells.slice(r,r+7).join('')+'</tr>';
   }
 
   var sideItems=allActs.length?allActs.map(function(item){
@@ -429,7 +445,7 @@ function renderCalendar(){
       +'<div class="act-check '+(item.action.done?'checked':'')+'" data-toggle="'+esc(item.lead.id)+'|'+esc(item.action.id)+'" style="margin-top:1px">'
       +(item.action.done?'<i class="ti ti-check" style="font-size:10px;color:var(--bg)"></i>':'')+'</div>'
       +'<div style="flex:1;min-width:0">'
-      +'<div style="font-size:12px;font-weight:500;color:'+color+';'+(item.action.done?'text-decoration:line-through':'')+'">'+esc(item.action.text)+'</div>'
+      +'<div style="font-size:12px;font-weight:500;color:'+color+';'+(item.action.done?'text-decoration:line-through':'')+'">'+(item.action.text||'')+'</div>'
       +'<div style="font-size:11px;color:var(--text2);margin-top:1px">'+esc(item.lead.name)+' · '+esc(item.date)+'</div>'
       +'<div style="display:inline-block;font-size:10px;font-weight:500;padding:1px 6px;border-radius:20px;background:'+bg+';color:'+color+';margin-top:2px">'+(item.action.kind==='past'?'Past':item.action.kind==='current'?'Current':'Follow-up')+'</div>'
       +'</div></div>';
@@ -444,31 +460,46 @@ function renderCalendar(){
     +'<div class="cal-layout">'
     +'<div class="cal-wrap">'
     +'<div class="cal-header"><div class="cal-title">'+MN[m]+' '+y+'</div><div style="font-size:12px;color:var(--text3)">'+allActs.length+' action'+(allActs.length!==1?'s':'')+'</div></div>'
-    +'<div class="cal-grid">'
-    +['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].map(function(dw){return'<div class="cal-dow">'+dw+'</div>'}).join('')
-    +cells+'</div></div>'
-    +'<div class="act-sidebar"><div class="act-sidebar-head">Actions in '+MN[m]+'</div>'+sideItems+'</div></div>';
+    +'<table class="cal-grid"><thead>'+dowRow+'</thead><tbody>'+rows+'</tbody></table>'
+    +'</div>'
+    +'<div class="act-sidebar"><div class="act-sidebar-head">Actions in '+MN[m]+'</div>'+sideItems+'</div>'
+    +'</div>';
 }
 
-/* ── account list ──────────────────────────────────── */
+/* ── account list ─────────────────────────────────────── */
 function renderAccList(){
-  var list=accs();
-  if(!list.length)return'<div class="page-header"><div class="page-title">Accounts</div></div><div class="empty">No accounts yet.</div>';
-  return '<div class="page-header"><div class="page-title">Accounts</div>'
+  var q=S.accSearch.toLowerCase().trim();
+  var all=accs();
+  var list=q?all.filter(function(a){
+    return (a.name||'').toLowerCase().indexOf(q)>-1
+      ||(a.type||'').toLowerCase().indexOf(q)>-1
+      ||(a.pic||'').toLowerCase().indexOf(q)>-1
+      ||(a.address||'').toLowerCase().indexOf(q)>-1
+      ||(a.comment||'').toLowerCase().indexOf(q)>-1;
+  }):all;
+
+  var h='<div class="page-header"><div class="page-title">Accounts</div>'
     +'<div style="display:flex;align-items:center;gap:8px">'
     +'<button class="btn btn-sm btn-danger" id="bulk-del-acc-btn" style="display:none"><i class="ti ti-trash"></i> Delete selected (<span id="bulk-acc-count">0</span>)</button>'
     +'<label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text2);cursor:pointer"><input type="checkbox" id="sel-all-acc" style="width:14px;height:14px;cursor:pointer"> Select all</label>'
     +'</div></div>'
-    +list.map(function(a){
-      return '<div class="list-item" data-acc="'+esc(a.id)+'">'
-        +'<div style="display:flex;align-items:center;gap:10px">'
-        +'<input type="checkbox" class="ck-acc" value="'+esc(a.id)+'" style="width:15px;height:15px;cursor:pointer;flex-shrink:0" onclick="event.stopPropagation()">'
-        +'<div class="av '+(CC[a.color]||'av-g')+'">'+ini(a.name)+'</div>'
-        +'<div><div style="font-size:14px;font-weight:500">'+esc(a.name)+'</div><div style="font-size:12px;color:var(--text2)">'+esc(a.type||'')+' · '+esc(a.pic||'—')+'</div></div></div>'
-        +'<div style="display:flex;align-items:center;gap:8px">'
-        +'<span class="badge bd-blue">'+(a.leads||[]).length+' lead'+((a.leads||[]).length!==1?'s':'')+'</span>'
-        +'<i class="ti ti-chevron-right" style="font-size:15px;color:var(--text3)"></i></div></div>';
-    }).join('');
+    +'<div class="search-wrap"><i class="ti ti-search"></i><input type="search" id="acc-search" placeholder="Search by name, type, PIC, address..." value="'+esc(S.accSearch)+'"></div>';
+
+  if(!list.length){
+    h+=q?'<div class="empty">No results for &ldquo;'+esc(S.accSearch)+'&rdquo;</div>':'<div class="empty">No accounts yet.</div>';
+    return h;
+  }
+  h+=list.map(function(a){
+    return '<div class="list-item" data-acc="'+esc(a.id)+'">'
+      +'<div style="display:flex;align-items:center;gap:10px">'
+      +'<input type="checkbox" class="ck-acc" value="'+esc(a.id)+'" style="width:15px;height:15px;cursor:pointer;flex-shrink:0" onclick="event.stopPropagation()">'
+      +'<div class="av '+(CC[a.color]||'av-g')+'">'+ini(a.name)+'</div>'
+      +'<div><div style="font-size:14px;font-weight:500">'+esc(a.name)+'</div><div style="font-size:12px;color:var(--text2)">'+esc(a.type||'')+' · '+esc(a.pic||'—')+'</div></div></div>'
+      +'<div style="display:flex;align-items:center;gap:8px">'
+      +'<span class="badge bd-blue">'+(a.leads||[]).length+' lead'+((a.leads||[]).length!==1?'s':'')+'</span>'
+      +'<i class="ti ti-chevron-right" style="font-size:15px;color:var(--text3)"></i></div></div>';
+  }).join('');
+  return h;
 }
 
 /* ── lead list ─────────────────────────────────────── */
@@ -745,7 +776,7 @@ async function confirmImport(){
 /* ── events ────────────────────────────────────────── */
 function attachEvents(){
   document.querySelectorAll('[data-tab]').forEach(function(el){
-    el.addEventListener('click',function(){S.tab=el.dataset.tab;S.view='list';S.fromAcc=null;S.leadSearch='';render();});
+    el.addEventListener('click',function(){S.tab=el.dataset.tab;S.view='list';S.fromAcc=null;S.leadSearch='';S.accSearch='';render();});
   });
   document.querySelectorAll('[data-acc]').forEach(function(el){
     el.addEventListener('click',function(){S.accId=el.dataset.acc;S.fromAcc=null;S.view='acc_detail';render();});
@@ -800,6 +831,14 @@ function attachEvents(){
       toast(isDone&&isDone.done?'Marked done!':'Marked undone.');
     });
   });
+
+  /* acc search */
+  var accSearchEl=document.getElementById('acc-search');
+  if(accSearchEl){
+    accSearchEl.addEventListener('input',function(){S.accSearch=accSearchEl.value;render();});
+    accSearchEl.addEventListener('keydown',function(e){if(e.key==='Escape'){S.accSearch='';render();}});
+    setTimeout(function(){if(document.getElementById('acc-search'))document.getElementById('acc-search').focus();},0);
+  }
 
   /* lead search */
   var searchEl=document.getElementById('lead-search');
@@ -859,6 +898,46 @@ function attachEvents(){
   var cp=document.getElementById('cal-prev');if(cp)cp.addEventListener('click',function(){S.calMonth--;if(S.calMonth<0){S.calMonth=11;S.calYear--;}render();});
   var cn=document.getElementById('cal-next');if(cn)cn.addEventListener('click',function(){S.calMonth++;if(S.calMonth>11){S.calMonth=0;S.calYear++;}render();});
   var ct=document.getElementById('cal-today');if(ct)ct.addEventListener('click',function(){S.calYear=new Date().getFullYear();S.calMonth=new Date().getMonth();render();});
+
+  /* team calendar nav */
+  var tcp=document.getElementById('tc-prev');if(tcp)tcp.addEventListener('click',function(){S.tcMonth--;if(S.tcMonth<0){S.tcMonth=11;S.tcYear=(S.tcYear||new Date().getFullYear())-1;}render();});
+  var tcn=document.getElementById('tc-next');if(tcn)tcn.addEventListener('click',function(){S.tcMonth++;if(S.tcMonth>11){S.tcMonth=0;S.tcYear=(S.tcYear||new Date().getFullYear())+1;}render();});
+  var tct=document.getElementById('tc-today');if(tct)tct.addEventListener('click',function(){S.tcYear=new Date().getFullYear();S.tcMonth=new Date().getMonth();render();});
+  var tcAdd=document.getElementById('tc-add-btn');if(tcAdd)tcAdd.addEventListener('click',function(){openTeamEventForm('');});
+
+  /* team cal date click */
+  document.querySelectorAll('[data-tc-date]').forEach(function(el){
+    el.addEventListener('click',function(){openTeamEventForm(el.dataset.tcDate);});
+  });
+
+  /* delete team event */
+  document.querySelectorAll('[data-del-tcev]').forEach(function(el){
+    el.addEventListener('click',async function(e){
+      e.stopPropagation();
+      if(!confirm('Delete this event?'))return;
+      await deleteDoc(doc(db,'teamEvents',el.dataset.delTcev));
+      toast('Event deleted.');
+    });
+  });
+
+  /* color picker */
+  (async function(){
+    var preview=document.getElementById('my-color-preview');
+    if(!preview)return;
+    var currentColor=await getUserColor();
+    preview.style.background=currentColor;
+    document.querySelectorAll('[data-pick-color]').forEach(function(el){
+      if(el.dataset.pickColor===currentColor)el.style.border='2px solid var(--text)';
+      el.addEventListener('click',async function(){
+        var c=el.dataset.pickColor;
+        await saveUserColor(c);
+        toast('Colour saved!');
+        if(preview)preview.style.background=c;
+        document.querySelectorAll('[data-pick-color]').forEach(function(x){x.style.border='2px solid transparent';});
+        el.style.border='2px solid var(--text)';
+      });
+    });
+  })();
 
   /* add action */
   var aab=document.getElementById('add-action-btn');
@@ -957,6 +1036,203 @@ function openModal(type,data){
   }
 }
 function closeModal(){document.getElementById('modal-overlay').style.display='none';}
+
+/* ── team calendar ───────────────────────────────────── */
+var USER_COLORS=['#3B82F6','#10B981','#F59E0B','#EF4444','#8B5CF6','#EC4899','#06B6D4','#84CC16'];
+
+async function getUserColor(){
+  if(!currentUser)return USER_COLORS[0];
+  try{
+    var ud=await getDoc(doc(db,'users',currentUser.uid));
+    if(ud.exists()&&ud.data().calColor)return ud.data().calColor;
+  }catch(e){}
+  return USER_COLORS[0];
+}
+
+async function saveUserColor(color){
+  if(!currentUser)return;
+  await updateDoc(doc(db,'users',currentUser.uid),{calColor:color});
+}
+
+function renderTeamCalendar(){
+  var y=S.tcYear,m=S.tcMonth;
+  var firstDay=new Date(y,m,1).getDay();
+  var dim=new Date(y,m+1,0).getDate();
+  var dip=new Date(y,m,0).getDate();
+  var tf=todayStr();
+  var pfx=y+'-'+String(m+1).padStart(2,'0');
+
+  // Collect team events from Firestore (stored in 'teamEvents' collection)
+  // We'll use DB.teamEvents which is populated by listener
+  var tevents=DB.teamEvents||{};
+  var events={};
+  var allActs=[];
+  Object.values(tevents).forEach(function(ev){
+    if(!ev.date||!ev.date.startsWith(pfx))return;
+    if(!events[ev.date])events[ev.date]=[];
+    events[ev.date].push(ev);
+    allActs.push(ev);
+  });
+  allActs.sort(function(a,b){return a.date<b.date?-1:1});
+
+  var dows=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  var dowRow='<tr class="cal-grid-row">'+dows.map(function(dw){return'<th class="cal-dow">'+dw+'</th>'}).join('')+'</tr>';
+
+  var allCells=[];
+  for(var i=firstDay-1;i>=0;i--){
+    allCells.push('<td class="cal-cell"><div class="cal-day-num other-month">'+(dip-i)+'</div><div class="cal-events-wrap"></div></td>');
+  }
+  for(var d=1;d<=dim;d++){
+    var ds=pfx+'-'+String(d).padStart(2,'0');
+    var isT=ds===tf;
+    var evs=events[ds]||[];
+    var dayNumHtml=isT?'<span class="cal-day-num today-num">'+d+'</span>':'<span class="cal-day-num">'+d+'</span>';
+    var evH=evs.slice(0,3).map(function(ev){
+      var bg=ev.userColor||'#3B82F6';
+      var txt=ev.name||(ev.workType||'');
+      return '<div class="cal-event" style="background:'+esc(bg)+'22;color:'+esc(bg)+';border-left:2px solid '+esc(bg)+'" title="'+esc(ev.userEmail||'')+': '+esc(txt)+'">'+esc(txt)+'</div>';
+    }).join('');
+    if(evs.length>3)evH+='<div style="font-size:9px;color:var(--text3)">+'+(evs.length-3)+' more</div>';
+    allCells.push('<td class="cal-cell" data-tc-date="'+esc(ds)+'">'+dayNumHtml+'<div class="cal-events-wrap">'+evH+'</div></td>');
+  }
+  while(allCells.length%7!==0){
+    var nd=allCells.length-firstDay-dim+1;
+    allCells.push('<td class="cal-cell"><div class="cal-day-num other-month">'+nd+'</div><div class="cal-events-wrap"></div></td>');
+  }
+  var rows='';
+  for(var r=0;r<allCells.length;r+=7){
+    rows+='<tr class="cal-grid-row">'+allCells.slice(r,r+7).join('')+'</tr>';
+  }
+
+  // sidebar list
+  var sideItems=allActs.length?allActs.map(function(ev){
+    var bg=ev.userColor||'#3B82F6';
+    return '<div class="act-sidebar-item">'
+      +'<div style="width:10px;height:10px;border-radius:50%;background:'+esc(bg)+';flex-shrink:0;margin-top:3px"></div>'
+      +'<div style="flex:1;min-width:0">'
+      +'<div style="font-size:12px;font-weight:500;color:var(--text)">'+esc(ev.name||'—')+'</div>'
+      +'<div style="font-size:11px;color:var(--text2);margin-top:1px">'+esc(ev.workType||'')+' · '+esc(ev.date)+'</div>'
+      +'<div style="font-size:11px;color:var(--text3);margin-top:1px">'+esc(ev.accountType==='private'?'Private Clients':ev.companyName||'')+' · '+esc(ev.userEmail||'')+'</div>'
+      +'</div>'
+      +'<button class="btn btn-sm btn-danger" data-del-tcev="'+esc(ev.id)+'" style="padding:2px 7px;font-size:11px"><i class="ti ti-x" style="font-size:11px"></i></button>'
+      +'</div>';
+  }).join(''):'<div class="empty">No events this month.</div>';
+
+  // color picker row
+  var colorPicker=USER_COLORS.map(function(c){
+    return '<div data-pick-color="'+esc(c)+'" style="width:22px;height:22px;border-radius:50%;background:'+esc(c)+';cursor:pointer;border:2px solid transparent;flex-shrink:0" title="'+esc(c)+'"></div>';
+  }).join('');
+
+  return '<div class="page-header"><div class="page-title">Team Calendar</div>'
+    +'<div style="display:flex;gap:6px;align-items:center" class="no-print">'
+    +'<button class="btn btn-sm" id="tc-prev"><i class="ti ti-chevron-left"></i></button>'
+    +'<button class="btn btn-sm" id="tc-today">Today</button>'
+    +'<button class="btn btn-sm" id="tc-next"><i class="ti ti-chevron-right"></i></button>'
+    +'<button class="btn btn-sm btn-primary" id="tc-add-btn"><i class="ti ti-plus"></i> Add Event</button>'
+    +'</div></div>'
+    +'<div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;padding:10px 14px;background:var(--bg);border:.5px solid var(--border);border-radius:var(--radius-lg)">'
+    +'<span style="font-size:12px;color:var(--text2);flex-shrink:0">My color:</span>'
+    +'<div id="color-picker-wrap" style="display:flex;gap:6px;align-items:center">'+colorPicker+'</div>'
+    +'<div id="my-color-preview" style="width:22px;height:22px;border-radius:50%;border:2px solid var(--text);margin-left:4px"></div>'
+    +'<span style="font-size:11px;color:var(--text3);margin-left:4px">Click a colour to set yours</span>'
+    +'</div>'
+    +'<div id="tc-event-form" style="display:none;background:var(--bg);border:.5px solid var(--border);border-radius:var(--radius-lg);padding:16px;margin-bottom:14px"></div>'
+    +'<div class="cal-layout">'
+    +'<div class="cal-wrap">'
+    +'<div class="cal-header"><div class="cal-title">'+MN[m]+' '+y+'</div><div style="font-size:12px;color:var(--text3)">'+allActs.length+' event'+(allActs.length!==1?'s':'')+'</div></div>'
+    +'<table class="cal-grid"><thead>'+dowRow+'</thead><tbody>'+rows+'</tbody></table>'
+    +'</div>'
+    +'<div class="act-sidebar"><div class="act-sidebar-head">Events in '+MN[m]+'</div>'+sideItems+'</div>'
+    +'</div>';
+}
+
+function openTeamEventForm(dateStr){
+  var form=document.getElementById('tc-event-form');
+  if(!form)return;
+  form.style.display='';
+  var accOptions=accs().map(function(a){return'<option value="'+esc(a.name)+'">'+esc(a.name)+'</option>'}).join('');
+  form.innerHTML='<div style="font-size:14px;font-weight:600;margin-bottom:12px">New Event'+(dateStr?' — '+dateStr:'')+'</div>'
+    +'<div class="form-row">'
+    +'<div><div class="field-label">Name (client)</div><input type="text" id="tc-name" placeholder="Client name"></div>'
+    +'<div><div class="field-label">Work Type</div><select id="tc-wtype"><option value="Premove Survey">Premove Survey</option><option value="Meeting">Meeting</option><option value="Move">Move</option><option value="Document">Document</option></select></div>'
+    +'</div>'
+    +'<div class="form-row">'
+    +'<div><div class="field-label">Date</div><input type="date" id="tc-date" value="'+(dateStr||todayStr())+'"></div>'
+    +'<div><div class="field-label">Account type</div><select id="tc-acctype"><option value="private">Private</option><option value="company">Company</option></select></div>'
+    +'</div>'
+    +'<div class="form-row" id="tc-company-row" style="display:none">'
+    +'<div style="flex:2"><div class="field-label">Company name</div><input type="text" id="tc-company" list="tc-company-list" placeholder="Company name or select existing"><datalist id="tc-company-list">'+accOptions+'</datalist></div>'
+    +'</div>'
+    +'<div class="form-row">'
+    +'<div><div class="field-label">Origin address</div><input type="text" id="tc-origin" placeholder="Pickup address"></div>'
+    +'<div><div class="field-label">Destination</div><input type="text" id="tc-dest" placeholder="Delivery address"></div>'
+    +'</div>'
+    +'<div class="form-row">'
+    +'<div><div class="field-label">Phone number</div><input type="text" id="tc-phone" placeholder="+82 10-0000-0000"></div>'
+    +'<div></div>'
+    +'</div>'
+    +'<div style="display:flex;gap:8px;justify-content:flex-end;margin-top:12px">'
+    +'<button class="btn btn-sm" id="tc-form-cancel">Cancel</button>'
+    +'<button class="btn btn-sm btn-primary" id="tc-form-save">Save</button>'
+    +'</div>';
+
+  var atSel=document.getElementById('tc-acctype');
+  var compRow=document.getElementById('tc-company-row');
+  atSel.addEventListener('change',function(){compRow.style.display=atSel.value==='company'?'':'none';});
+
+  document.getElementById('tc-form-cancel').addEventListener('click',function(){form.style.display='none';form.innerHTML='';});
+  document.getElementById('tc-form-save').addEventListener('click',async function(){
+    var name=document.getElementById('tc-name').value.trim();
+    var wtype=document.getElementById('tc-wtype').value;
+    var date=document.getElementById('tc-date').value;
+    var accType=document.getElementById('tc-acctype').value;
+    var company=document.getElementById('tc-company')?(document.getElementById('tc-company').value.trim()):'';
+    var origin=document.getElementById('tc-origin').value.trim();
+    var dest=document.getElementById('tc-dest').value.trim();
+    var phone=document.getElementById('tc-phone').value.trim();
+    if(!name||!date){toast('Name and date are required.');return;}
+    var userColor=await getUserColor();
+    var evObj={
+      name:name,workType:wtype,date:date,accountType:accType,
+      origin:origin,destination:dest,phone:phone,
+      userColor:userColor,userEmail:currentUser.email,userId:currentUser.uid,
+      createdAt:serverTimestamp()
+    };
+    if(accType==='company'&&company){
+      evObj.companyName=company;
+      // auto-create/link account
+      var match=accs().find(function(a){return a.name.trim().toLowerCase()===company.toLowerCase()});
+      if(!match){
+        var newAcc={name:company,type:'Company',pic:'',email:'',phone:phone||'',address:origin||'',comment:'Auto-created from Team Calendar',color:COLS[Math.floor(Math.random()*COLS.length)],leads:[]};
+        var ar=await addDoc(collection(db,'accounts'),newAcc);
+        match=Object.assign({},newAcc,{id:ar.id});
+        DB.accounts[ar.id]=match;
+        toast('Account "'+company+'" auto-created.');
+      }
+      evObj.accountId=match.id;
+      // also create as lead
+      var lr=await addDoc(collection(db,'leads'),{name:name,company:company,position:'',email:'',phone:phone||'',address:origin||'',comment:'From Team Calendar: '+wtype,color:COLS[Math.floor(Math.random()*COLS.length)],accounts:[match.id],actions:[{id:uid(),date:date,kind:'next',text:wtype+(dest?' → '+dest:''),done:false}]});
+      await updateDoc(doc(db,'accounts',match.id),{leads:(match.leads||[]).concat([lr.id])});
+    } else {
+      // private -> "Private Clients" account
+      evObj.companyName='Private Clients';
+      var pvMatch=accs().find(function(a){return a.name==='Private Clients'});
+      if(!pvMatch){
+        var pvAcc={name:'Private Clients',type:'Private',pic:'',email:'',phone:'',address:'',comment:'Auto-created: holds all private client leads',color:'g',leads:[]};
+        var pvr=await addDoc(collection(db,'accounts'),pvAcc);
+        pvMatch=Object.assign({},pvAcc,{id:pvr.id});
+        DB.accounts[pvr.id]=pvMatch;
+        toast('Account "Private Clients" created.');
+      }
+      evObj.accountId=pvMatch.id;
+      var pvlr=await addDoc(collection(db,'leads'),{name:name,company:'Private',position:'',email:'',phone:phone||'',address:origin||'',comment:'From Team Calendar: '+wtype,color:COLS[Math.floor(Math.random()*COLS.length)],accounts:[pvMatch.id],actions:[{id:uid(),date:date,kind:'next',text:wtype+(dest?' → '+dest:''),done:false}]});
+      await updateDoc(doc(db,'accounts',pvMatch.id),{leads:(pvMatch.leads||[]).concat([pvlr.id])});
+    }
+    await addDoc(collection(db,'teamEvents'),evObj);
+    toast('Event saved.');
+    form.style.display='none';form.innerHTML='';
+  });
+}
 
 /* ── export CSV ────────────────────────────────────── */
 function exportCSV(){
